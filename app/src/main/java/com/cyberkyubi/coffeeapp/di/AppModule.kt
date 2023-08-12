@@ -7,6 +7,9 @@ import org.koin.dsl.module
 val appModule = module {
 
     viewModel<MainViewModel> {
-        MainViewModel()
+        MainViewModel(
+            getBeveragesMenuUseCase = get(),
+            getFoodMenuUseCase = get()
+        )
     }
 }

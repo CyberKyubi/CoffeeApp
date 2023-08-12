@@ -2,7 +2,6 @@ package com.cyberkyubi.coffeeapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.GridView
 import androidx.lifecycle.Observer
@@ -29,20 +28,19 @@ class MainActivity : AppCompatActivity() {
         gridViewAdapter = MenuGridViewAdapter(this, emptyList())
         gridView.adapter = gridViewAdapter
 
-        viewModel.menuLive.observe(this, Observer {
+        viewModel.menuLive.observe(this) {
             gridViewAdapter.updateMenu(it)
-        })
-
+        }
 
         val beveragesButton = findViewById<Button>(R.id.beveragesButton)
         val foodButton = findViewById<Button>(R.id.foodButton)
 
         beveragesButton.setOnClickListener {
-
+            viewModel.getBeveragesMenu()
         }
 
         foodButton.setOnClickListener {
-
+            viewModel.getFoodMenu()
         }
 
     }

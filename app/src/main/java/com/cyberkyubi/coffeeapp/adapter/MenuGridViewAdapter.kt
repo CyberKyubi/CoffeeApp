@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.cyberkyubi.coffeeapp.R
+import com.cyberkyubi.domain.model.CardOfProductMenuModel
 
-class MenuGridViewAdapter(private val context: Context, private var data: List<String>): BaseAdapter() {
+class MenuGridViewAdapter(
+    context: Context,
+    private var data: List<CardOfProductMenuModel>
+): BaseAdapter() {
 
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -19,7 +23,7 @@ class MenuGridViewAdapter(private val context: Context, private var data: List<S
     }
 
     override fun getItem(position: Int): Any {
-        return data[position]
+        return data[position].title
     }
 
     override fun getItemId(position: Int): Long {
@@ -48,7 +52,7 @@ class MenuGridViewAdapter(private val context: Context, private var data: List<S
         val textView: TextView = itemView.findViewById(R.id.textView4)
     }
 
-    fun updateMenu(newMenu: List<String>) {
+    fun updateMenu(newMenu: List<CardOfProductMenuModel>) {
         data = newMenu
         notifyDataSetChanged()
     }

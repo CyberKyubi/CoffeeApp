@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "CoffeeApp"
 include(":app")
- 
+include(":domain")
+include(":data")
