@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import com.cyberkyubi.coffeeapp.R
 import com.cyberkyubi.domain.model.CardOfProductMenuModel
 
 class MenuGridViewAdapter(
-    context: Context,
+    private var context: Context,
     private var data: List<CardOfProductMenuModel>
 ): BaseAdapter() {
 
@@ -34,7 +37,6 @@ class MenuGridViewAdapter(
         val view: View
         val holder: ViewHolder
 
-
         if (convertView == null) {
             view = inflater.inflate(R.layout.gridview_item, parent, false)
             holder = ViewHolder(view)
@@ -44,11 +46,16 @@ class MenuGridViewAdapter(
             holder = view.tag as ViewHolder
         }
 
+        holder.cardOfProduct.setOnClickListener {
+
+        }
+
         holder.textView.text = getItem(position).toString()
         return view
     }
 
     private class ViewHolder(itemView: View) {
+        val cardOfProduct: CardView = itemView.findViewById(R.id.cardOfProduct)
         val textView: TextView = itemView.findViewById(R.id.textView4)
     }
 

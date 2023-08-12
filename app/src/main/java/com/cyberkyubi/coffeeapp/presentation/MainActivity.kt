@@ -43,5 +43,6 @@ class MainActivity : AppCompatActivity() {
             viewModel.getFoodMenu()
         }
 
+
     }
 }
