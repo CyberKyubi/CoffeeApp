@@ -1,16 +1,18 @@
 package com.cyberkyubi.coffeeapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.core.content.ContextCompat.startActivity
 import com.cyberkyubi.coffeeapp.R
+import com.cyberkyubi.coffeeapp.presentation.ProductListingActivity
 import com.cyberkyubi.domain.model.CardOfProductMenuModel
+
 
 class MenuGridViewAdapter(
     private var context: Context,
@@ -47,7 +49,8 @@ class MenuGridViewAdapter(
         }
 
         holder.cardOfProduct.setOnClickListener {
-
+            val intent = Intent(context, ProductListingActivity::class.java)
+            context.startActivity(intent)
         }
 
         holder.textView.text = getItem(position).toString()

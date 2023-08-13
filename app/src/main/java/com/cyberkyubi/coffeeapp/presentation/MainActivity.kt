@@ -2,9 +2,9 @@ package com.cyberkyubi.coffeeapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.GridView
-import androidx.lifecycle.Observer
 import com.cyberkyubi.coffeeapp.R
 import com.cyberkyubi.coffeeapp.adapter.MenuGridViewAdapter
 import com.cyberkyubi.coffeeapp.databinding.ActivityMainBinding
@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel<MainViewModel>()
-
 
     private lateinit var gridView: GridView
     private lateinit var gridViewAdapter: MenuGridViewAdapter
@@ -43,6 +42,45 @@ class MainActivity : AppCompatActivity() {
             viewModel.getFoodMenu()
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        Log.e("Activity", "MainActivity onStart")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.e("Activity", "MainActivity OnResume")
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.e("Activity", "MainActivity onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.e("Activity", "MainActivity onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        Log.e("Activity", "MainActivity onRestart")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.e("Activity", "MainActivity onDestroy")
 
     }
 }
