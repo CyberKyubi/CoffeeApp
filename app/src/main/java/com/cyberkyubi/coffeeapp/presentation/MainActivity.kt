@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModel<MainViewModel>()
+    private val viewModel: MainViewModel by viewModel()
 
     private lateinit var gridView: GridView
     private lateinit var gridViewAdapter: MenuGridViewAdapter
@@ -31,11 +31,19 @@ class MainActivity : AppCompatActivity() {
             gridViewAdapter.updateMenu(it)
         }
 
+
         val beveragesButton = findViewById<Button>(R.id.beveragesButton)
         val foodButton = findViewById<Button>(R.id.foodButton)
 
+        viewModel.firstCategoryLive.observe(this) {
+            beveragesButton.text = it
+        }
         beveragesButton.setOnClickListener {
             viewModel.getBeveragesMenu()
+        }
+
+        viewModel.secondCategoryLive.observe(this) {
+            foodButton.text = it
         }
 
         foodButton.setOnClickListener {

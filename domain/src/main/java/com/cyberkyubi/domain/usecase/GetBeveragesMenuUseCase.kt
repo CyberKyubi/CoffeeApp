@@ -1,14 +1,11 @@
 package com.cyberkyubi.domain.usecase
 
-import com.cyberkyubi.domain.model.CardOfProductMenuModel
+import com.cyberkyubi.domain.model.MenuModel
+import com.cyberkyubi.domain.repository.CoffeeRepository
 
-class GetBeveragesMenuUseCase {
+class GetBeveragesMenuUseCase(private val coffeeRepository: CoffeeRepository) {
 
-    fun execute(): List<CardOfProductMenuModel> {
-        return listOf(
-            CardOfProductMenuModel(title = "Холодные"),
-            CardOfProductMenuModel(title = "Горячие"),
-            CardOfProductMenuModel(title = "Весна-Лето"),
-        )
+    suspend fun execute(categoryId: Int): List<MenuModel> {
+        return coffeeRepository.getMenuByCategoryId(categoryId)
     }
 }

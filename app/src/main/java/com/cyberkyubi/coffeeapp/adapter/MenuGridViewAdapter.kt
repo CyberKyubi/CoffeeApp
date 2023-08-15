@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import com.cyberkyubi.coffeeapp.R
-import com.cyberkyubi.coffeeapp.presentation.ProductListingActivity
-import com.cyberkyubi.domain.model.CardOfProductMenuModel
 
+import com.cyberkyubi.coffeeapp.presentation.ProductListingActivity
+import com.cyberkyubi.domain.model.MenuModel
 
 class MenuGridViewAdapter(
     private var context: Context,
-    private var data: List<CardOfProductMenuModel>
+    private var listMenu: List<MenuModel>
 ): BaseAdapter() {
 
     private val inflater: LayoutInflater =
@@ -24,11 +25,11 @@ class MenuGridViewAdapter(
 
 
     override fun getCount(): Int {
-        return data.size
+        return listMenu.size
     }
 
-    override fun getItem(position: Int): Any {
-        return data[position].title
+    override fun getItem(position: Int): MenuModel {
+        return listMenu[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -53,17 +54,28 @@ class MenuGridViewAdapter(
             context.startActivity(intent)
         }
 
-        holder.textView.text = getItem(position).toString()
+        val item = getItem(position)
+
+        val drawable = when (item.categoryId) {
+            1 -> AppCompatResources.getDrawable(context, R.drawable.ic_coffee_cup)
+            2 -> AppCompatResources.getDrawable(context, R.drawable.ic_sweets)
+            else -> {
+                AppCompatResources.getDrawable(context, R.drawable.ic_warning)
+            }
+        }
+        holder.drawableResource.setImageDrawable(drawable)
+        holder.textView.text = item.title
         return view
     }
 
     private class ViewHolder(itemView: View) {
         val cardOfProduct: CardView = itemView.findViewById(R.id.cardOfProduct)
+        val drawableResource: ImageView = itemView.findViewById(R.id.iconProduct)
         val textView: TextView = itemView.findViewById(R.id.textView4)
     }
 
-    fun updateMenu(newMenu: List<CardOfProductMenuModel>) {
-        data = newMenu
+    fun updateMenu(newMenu: List<MenuModel>) {
+        listMenu = newMenu
         notifyDataSetChanged()
     }
 }
