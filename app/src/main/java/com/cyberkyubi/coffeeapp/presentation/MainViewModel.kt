@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cyberkyubi.domain.model.CategoriesModel
 import kotlinx.coroutines.launch
 
 import com.cyberkyubi.domain.model.MenuModel
@@ -25,10 +26,11 @@ class MainViewModel(
     private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val menuLive: LiveData<List<MenuModel>> = menuMutableLive
 
-    private val firstCategoryMutableLive = MutableLiveData<String>()
-    private val secondCategoryMutableLive = MutableLiveData<String>()
-    val firstCategoryLive: LiveData<String> = firstCategoryMutableLive
-    val secondCategoryLive: LiveData<String> = secondCategoryMutableLive
+    data class CategoryData(val title: String, var isActive: Boolean = false)
+    private val beverageCategoryMutableLive = MutableLiveData<CategoryData>()
+    private val foodCategoryMutableLive = MutableLiveData<CategoryData>()
+    val beverageCategoryLive: LiveData<CategoryData> = beverageCategoryMutableLive
+    val foodCategoryLive: LiveData<CategoryData> = foodCategoryMutableLive
 
 
     private enum class StateOfMenu {Initial, BeveragesMenu, FoodMenu}
@@ -42,40 +44,40 @@ class MainViewModel(
     }
 
 
-//     private fun addNewCategories() {
-//        viewModelScope.launch {
-//            addNewCategoriesUseCase.execute(
-//                listCategories = listOf(
-//                    CategoriesModel(categoryId = 0, title = "Напитки"),
-//                    CategoriesModel(categoryId = 0, title = "Еда"),
-//                )
-//            )
-//        }
-//    }
+     private fun addNewCategories() {
+        viewModelScope.launch {
+            addNewCategoriesUseCase.execute(
+                listCategories = listOf(
+                    CategoriesModel(categoryId = 0, title = "Напитки"),
+                    CategoriesModel(categoryId = 0, title = "Еда"),
+                )
+            )
+        }
+    }
 
-//    private fun addNewMenu() {
-//        viewModelScope.launch {
-//            addNewMenu.execute(
-//                listMenu = listOf(
-//                    MenuModel(menuId = 0, categoryId = 1, title = "Весна и лето", drawableResourceName = "ic_coffee_cup.png"),
-//                    MenuModel(menuId = 0, categoryId = 1, title = "Горячий кофе", drawableResourceName = "ic_coffee_cup.png"),
-//                    MenuModel(menuId = 0, categoryId = 1, title = "Холодный кофе", drawableResourceName = "ic_coffee_cup.png"),
-//                    MenuModel(menuId = 0, categoryId = 1, title = "Охлаждающие напитки", drawableResourceName = "ic_coffee_cup.png"),
-//
-//                    MenuModel(menuId = 0, categoryId = 2, title = "Десерты", drawableResourceName = "ic_sweets.png"),
-//                    MenuModel(menuId = 0, categoryId = 2, title = "Каши", drawableResourceName = "ic_sweets.png"),
-//                    MenuModel(menuId = 0, categoryId = 2, title = "Сендвичи", drawableResourceName = "ic_sweets.png"),
-//                    MenuModel(menuId = 0, categoryId = 2, title = "Спорт. питание", drawableResourceName = "ic_sweets.png"),
-//                )
-//            )
-//        }
-//    }
+    private fun addNewMenu() {
+        viewModelScope.launch {
+            addNewMenu.execute(
+                listMenu = listOf(
+                    MenuModel(menuId = 0, categoryId = 1, title = "Весна и лето", drawableResourceName = "ic_coffee_cup.png"),
+                    MenuModel(menuId = 0, categoryId = 1, title = "Горячий кофе", drawableResourceName = "ic_coffee_cup.png"),
+                    MenuModel(menuId = 0, categoryId = 1, title = "Холодный кофе", drawableResourceName = "ic_coffee_cup.png"),
+                    MenuModel(menuId = 0, categoryId = 1, title = "Охлаждающие напитки", drawableResourceName = "ic_coffee_cup.png"),
+
+                    MenuModel(menuId = 0, categoryId = 2, title = "Десерты", drawableResourceName = "ic_sweets.png"),
+                    MenuModel(menuId = 0, categoryId = 2, title = "Каши", drawableResourceName = "ic_sweets.png"),
+                    MenuModel(menuId = 0, categoryId = 2, title = "Сендвичи", drawableResourceName = "ic_sweets.png"),
+                    MenuModel(menuId = 0, categoryId = 2, title = "Спорт. питание", drawableResourceName = "ic_sweets.png"),
+                )
+            )
+        }
+    }
 
     private fun getInitialMenu() {
         viewModelScope.launch {
             val (firstCategory, secondCategory) = getCategoriesUseCase.execute()
-            firstCategoryMutableLive.value = firstCategory.title
-            secondCategoryMutableLive.value = secondCategory.title
+            beverageCategoryMutableLive.value = CategoryData(title = firstCategory.title)
+            foodCategoryMutableLive.value = CategoryData(title = secondCategory.title)
         }
 
         getBeveragesMenu()
@@ -84,6 +86,12 @@ class MainViewModel(
     fun getBeveragesMenu() {
         if (currentStateOfMenu != StateOfMenu.BeveragesMenu) {
             currentStateOfMenu = StateOfMenu.BeveragesMenu
+
+            beverageCategoryMutableLive.value?.let {categoryData ->
+                categoryData.isActive = true
+                beverageCategoryMutableLive.value = categoryData
+            }
+
             viewModelScope.launch {
                 menuMutableLive.value = getBeveragesMenuUseCase.execute(categoryId = 1)
             }
@@ -94,6 +102,13 @@ class MainViewModel(
     fun getFoodMenu() {
         if (currentStateOfMenu != StateOfMenu.FoodMenu) {
             currentStateOfMenu = StateOfMenu.FoodMenu
+
+
+            foodCategoryMutableLive.value?.let {categoryData ->
+                categoryData.isActive = true
+                foodCategoryMutableLive.value = categoryData
+            }
+
             viewModelScope.launch {
                 menuMutableLive.value = getFoodMenuUseCase.execute(categoryId = 2)
             }

@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="pageBackgroundBlack">#171413</color>
+    <color name="textViewGray">#605A57</color>
+    <color name="textViewBrown">#9E5E3B</color>
+
 </resources>

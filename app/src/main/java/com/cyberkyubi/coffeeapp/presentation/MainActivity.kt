@@ -3,8 +3,9 @@ package com.cyberkyubi.coffeeapp.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import android.widget.GridView
+import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import com.cyberkyubi.coffeeapp.R
 import com.cyberkyubi.coffeeapp.adapter.MenuGridViewAdapter
 import com.cyberkyubi.coffeeapp.databinding.ActivityMainBinding
@@ -23,31 +24,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        val beveragesTextView = findViewById<TextView>(R.id.bevereagesTextView)
+        val foodTextView = findViewById<TextView>(R.id.foodTextView)
+        val dotDrawableBottom = AppCompatResources.getDrawable(this, R.drawable.dot)
+
+        viewModel.beverageCategoryLive.observe(this) {categoryData ->
+            beveragesTextView.text = categoryData.title
+
+            if (categoryData.isActive) {
+                beveragesTextView.setTextColor(this.getColor(R.color.textViewBrown))
+                beveragesTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null, null, null, dotDrawableBottom
+                )
+
+                foodTextView.setTextColor(this.getColor(R.color.textViewGray))
+                beveragesTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null, null, null, null
+                )
+            }
+        }
+        viewModel.foodCategoryLive.observe(this) {
+            foodTextView.text = it
+        }
+
+        beveragesTextView.setOnClickListener {
+            viewModel.getBeveragesMenu()
+        }
+        foodTextView.setOnClickListener {
+            viewModel.getFoodMenu()
+        }
+
+
         gridView = findViewById(R.id.menuGridView)
         gridViewAdapter = MenuGridViewAdapter(this, emptyList())
         gridView.adapter = gridViewAdapter
 
         viewModel.menuLive.observe(this) {
             gridViewAdapter.updateMenu(it)
-        }
-
-
-        val beveragesButton = findViewById<Button>(R.id.beveragesButton)
-        val foodButton = findViewById<Button>(R.id.foodButton)
-
-        viewModel.firstCategoryLive.observe(this) {
-            beveragesButton.text = it
-        }
-        beveragesButton.setOnClickListener {
-            viewModel.getBeveragesMenu()
-        }
-
-        viewModel.secondCategoryLive.observe(this) {
-            foodButton.text = it
-        }
-
-        foodButton.setOnClickListener {
-            viewModel.getFoodMenu()
         }
 
     }

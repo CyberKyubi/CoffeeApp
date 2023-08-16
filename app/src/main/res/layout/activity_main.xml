@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pageBackgroundBlack"
     tools:context=".presentation.MainActivity">
 
     <TextView
@@ -12,8 +13,9 @@
         android:layout_height="67dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/montserrat_alternates_semibold"
+        android:fontFamily="@font/montserrat_alternates_bold"
         android:text="@string/title"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,22 +29,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <Button
-            android:id="@+id/beveragesButton"
+        <TextView
+            android:id="@+id/bevereagesTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:text="@string/beverages"
-            app:layout_constraintEnd_toStartOf="@+id/foodButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="32dp"
+            tools:drawableBottom="@drawable/dot"
+            android:fontFamily="@font/montserrat_alternates_semibold"
+            android:textColor="@color/textViewGray"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/foodTextView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/beverages" />
 
-        <Button
-            android:id="@+id/foodButton"
+        <TextView
+            android:id="@+id/foodTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/food"
+            android:fontFamily="@font/montserrat_alternates_semibold"
+            android:textColor="@color/textViewGray"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/food" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridView
