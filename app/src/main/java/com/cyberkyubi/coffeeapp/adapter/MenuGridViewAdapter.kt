@@ -71,7 +71,7 @@ class MenuGridViewAdapter(
     private class ViewHolder(itemView: View) {
         val cardOfProduct: CardView = itemView.findViewById(R.id.cardOfProduct)
         val drawableResource: ImageView = itemView.findViewById(R.id.iconProduct)
-        val textView: TextView = itemView.findViewById(R.id.textView4)
+        val textView: TextView = itemView.findViewById(R.id.titleMenu)
     }
 
     fun updateMenu(newMenu: List<MenuModel>) {

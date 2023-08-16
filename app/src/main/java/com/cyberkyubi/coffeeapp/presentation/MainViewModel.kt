@@ -4,15 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cyberkyubi.domain.model.CategoriesModel
 import kotlinx.coroutines.launch
 
+import com.cyberkyubi.domain.model.CategoriesModel
 import com.cyberkyubi.domain.model.MenuModel
 import com.cyberkyubi.domain.usecase.AddNewCategoriesUseCase
 import com.cyberkyubi.domain.usecase.AddNewMenu
 import com.cyberkyubi.domain.usecase.GetBeveragesMenuUseCase
 import com.cyberkyubi.domain.usecase.GetCategoriesUseCase
 import com.cyberkyubi.domain.usecase.GetFoodMenuUseCase
+
+enum class StateOfMenu {
+    Initial,
+    BeveragesMenu,
+    FoodMenu
+}
 
 class MainViewModel(
     private val addNewCategoriesUseCase: AddNewCategoriesUseCase,
@@ -23,18 +29,16 @@ class MainViewModel(
     private val getFoodMenuUseCase: GetFoodMenuUseCase
 ) : ViewModel() {
 
+    private val beverageCategoryMutableLive = MutableLiveData<String>()
+    private val foodCategoryMutableLive = MutableLiveData<String>()
+    val beverageCategoryLive: LiveData<String> = beverageCategoryMutableLive
+    val foodCategoryLive: LiveData<String> = foodCategoryMutableLive
+
     private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val menuLive: LiveData<List<MenuModel>> = menuMutableLive
 
-    data class CategoryData(val title: String, var isActive: Boolean = false)
-    private val beverageCategoryMutableLive = MutableLiveData<CategoryData>()
-    private val foodCategoryMutableLive = MutableLiveData<CategoryData>()
-    val beverageCategoryLive: LiveData<CategoryData> = beverageCategoryMutableLive
-    val foodCategoryLive: LiveData<CategoryData> = foodCategoryMutableLive
-
-
-    private enum class StateOfMenu {Initial, BeveragesMenu, FoodMenu}
-    private var currentStateOfMenu: StateOfMenu = StateOfMenu.Initial
+    private var currentStateOfMenuMutableLiveData = MutableLiveData(StateOfMenu.Initial)
+    val stateOfMenuLive: LiveData<StateOfMenu> = currentStateOfMenuMutableLiveData
 
     init {
 //        addNewCategories()
@@ -76,21 +80,16 @@ class MainViewModel(
     private fun getInitialMenu() {
         viewModelScope.launch {
             val (firstCategory, secondCategory) = getCategoriesUseCase.execute()
-            beverageCategoryMutableLive.value = CategoryData(title = firstCategory.title)
-            foodCategoryMutableLive.value = CategoryData(title = secondCategory.title)
+            beverageCategoryMutableLive.value = firstCategory.title
+            foodCategoryMutableLive.value = secondCategory.title
         }
 
-        getBeveragesMenu()
+        getBeverageMenu()
     }
 
-    fun getBeveragesMenu() {
-        if (currentStateOfMenu != StateOfMenu.BeveragesMenu) {
-            currentStateOfMenu = StateOfMenu.BeveragesMenu
-
-            beverageCategoryMutableLive.value?.let {categoryData ->
-                categoryData.isActive = true
-                beverageCategoryMutableLive.value = categoryData
-            }
+    fun getBeverageMenu() {
+        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.BeveragesMenu) {
+            currentStateOfMenuMutableLiveData.value = StateOfMenu.BeveragesMenu
 
             viewModelScope.launch {
                 menuMutableLive.value = getBeveragesMenuUseCase.execute(categoryId = 1)
@@ -100,14 +99,8 @@ class MainViewModel(
     }
 
     fun getFoodMenu() {
-        if (currentStateOfMenu != StateOfMenu.FoodMenu) {
-            currentStateOfMenu = StateOfMenu.FoodMenu
-
-
-            foodCategoryMutableLive.value?.let {categoryData ->
-                categoryData.isActive = true
-                foodCategoryMutableLive.value = categoryData
-            }
+        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.FoodMenu) {
+            currentStateOfMenuMutableLiveData.value = StateOfMenu.FoodMenu
 
             viewModelScope.launch {
                 menuMutableLive.value = getFoodMenuUseCase.execute(categoryId = 2)

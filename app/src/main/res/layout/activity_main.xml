@@ -13,48 +13,43 @@
         android:layout_height="67dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/montserrat_alternates_bold"
         android:text="@string/title"
-        android:textColor="@color/white"
-        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MainPageTitle" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
-            android:id="@+id/bevereagesTextView"
+            android:id="@+id/beverageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
-            tools:drawableBottom="@drawable/dot"
-            android:fontFamily="@font/montserrat_alternates_semibold"
-            android:textColor="@color/textViewGray"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/foodTextView"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/beverages" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:drawableBottom="@drawable/dot"
+            tools:text="@string/beverages"
+            style="@style/Category" />
 
         <TextView
             android:id="@+id/foodTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_alternates_semibold"
-            android:textColor="@color/textViewGray"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            tools:text="@string/food" />
+            tools:text="@string/food"
+            style="@style/Category" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,12 +66,12 @@
         android:numColumns="auto_fit"
         android:padding="4dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="15dp"
+        android:verticalSpacing="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.45999998" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
