@@ -12,17 +12,16 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
 import com.cyberkyubi.coffeeapp.R
 
-import com.cyberkyubi.coffeeapp.presentation.ProductListingActivity
+import com.cyberkyubi.coffeeapp.presentation.activity.DrinksActivity
 import com.cyberkyubi.domain.model.MenuModel
 
-class MenuGridViewAdapter(
+class MainGridAdapter(
     private var context: Context,
     private var listMenu: List<MenuModel>
 ): BaseAdapter() {
 
     private val inflater: LayoutInflater =
         context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
 
     override fun getCount(): Int {
         return listMenu.size
@@ -41,7 +40,7 @@ class MenuGridViewAdapter(
         val holder: ViewHolder
 
         if (convertView == null) {
-            view = inflater.inflate(R.layout.gridview_item, parent, false)
+            view = inflater.inflate(R.layout.gridview_menu, parent, false)
             holder = ViewHolder(view)
             view.tag = holder
         } else {
@@ -49,12 +48,15 @@ class MenuGridViewAdapter(
             holder = view.tag as ViewHolder
         }
 
-        holder.cardOfProduct.setOnClickListener {
-            val intent = Intent(context, ProductListingActivity::class.java)
-            context.startActivity(intent)
-        }
-
         val item = getItem(position)
+
+        holder.cardMenu.setOnClickListener {
+            when (item.categoryId) {
+                1 -> startDrinksActivity(menuModel = item)
+                2 -> startFoodsActivity(menuModel = item)
+            }
+
+        }
 
         val drawable = when (item.categoryId) {
             1 -> AppCompatResources.getDrawable(context, R.drawable.ic_coffee_cup)
@@ -64,18 +66,35 @@ class MenuGridViewAdapter(
             }
         }
         holder.drawableResource.setImageDrawable(drawable)
-        holder.textView.text = item.title
+        holder.titleMenu.text = item.title
         return view
     }
 
     private class ViewHolder(itemView: View) {
-        val cardOfProduct: CardView = itemView.findViewById(R.id.cardOfProduct)
-        val drawableResource: ImageView = itemView.findViewById(R.id.iconProduct)
-        val textView: TextView = itemView.findViewById(R.id.titleMenu)
+        val cardMenu: CardView = itemView.findViewById(R.id.cardMenu)
+        val drawableResource: ImageView = itemView.findViewById(R.id.iconMenu)
+        val titleMenu: TextView = itemView.findViewById(R.id.titleMenu)
     }
 
     fun updateMenu(newMenu: List<MenuModel>) {
         listMenu = newMenu
         notifyDataSetChanged()
+    }
+
+    private fun startDrinksActivity(menuModel: MenuModel) {
+        val intent = Intent(context, DrinksActivity::class.java)
+        startActivity(intent = intent, menuModel = menuModel)
+    }
+
+    private fun startFoodsActivity(menuModel: MenuModel) {
+        // TODO: FoodsActivity
+        val intent = Intent(context, DrinksActivity::class.java)
+        startActivity(intent = intent, menuModel = menuModel)
+    }
+
+    private fun startActivity(intent: Intent, menuModel: MenuModel) {
+        intent.putExtra("menu_id", menuModel.menuId)
+        intent.putExtra("title_menu", menuModel.title)
+        context.startActivity(intent)
     }
 }

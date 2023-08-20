@@ -5,10 +5,12 @@ import kotlinx.coroutines.withContext
 
 import com.cyberkyubi.data.dao.CoffeeDao
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListCategoriesEntityToListCategoriesModel
-import com.cyberkyubi.data.mapper.CoffeeMapper.mapListCategoriesModelToListCategoriesEntity
+import com.cyberkyubi.data.mapper.CoffeeMapper.mapListDrinksEntityToListDrinkModel
+import com.cyberkyubi.data.mapper.CoffeeMapper.mapListFoodsEntityToListFoodModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListMenuEntityToListMenuModel
-import com.cyberkyubi.data.mapper.CoffeeMapper.mapListMenuModelToListMenuEntity
 import com.cyberkyubi.domain.model.CategoriesModel
+import com.cyberkyubi.domain.model.DrinkModel
+import com.cyberkyubi.domain.model.FoodModel
 import com.cyberkyubi.domain.model.MenuModel
 import com.cyberkyubi.domain.repository.CoffeeRepository
 
@@ -22,15 +24,25 @@ class CoffeeRepositoryImpl(private val coffeeDao: CoffeeDao): CoffeeRepository {
 
     override suspend fun getMenuByCategoryId(categoryId: Int): List<MenuModel>  {
         return withContext(Dispatchers.IO) {
-            return@withContext mapListMenuEntityToListMenuModel(coffeeDao.getMenuByCategoryId(categoryId))
+            return@withContext mapListMenuEntityToListMenuModel(
+                coffeeDao.getMenuByCategoryId(categoryId = categoryId)
+            )
         }
     }
 
-    override suspend fun insertAllCategories(listCategories: List<CategoriesModel>) {
-        coffeeDao.insertAllCategories(mapListCategoriesModelToListCategoriesEntity(listCategories))
+    override suspend fun getDrinkMenuById (menuId: Int): List<DrinkModel> {
+        return withContext(Dispatchers.IO) {
+            return@withContext mapListDrinksEntityToListDrinkModel(
+                coffeeDao.getDrinkMenuById(menuId = menuId)
+            )
+        }
     }
 
-    override suspend fun insertAllMenu(listMenu: List<MenuModel>) {
-        coffeeDao.insertAllMenu(mapListMenuModelToListMenuEntity(listMenu))
+    override suspend fun getFoodMenuById (menuId: Int): List<FoodModel> {
+        return withContext(Dispatchers.IO) {
+            return@withContext mapListFoodsEntityToListFoodModel(
+                coffeeDao.getFoodMenuById(menuId = menuId)
+            )
+        }
     }
 }

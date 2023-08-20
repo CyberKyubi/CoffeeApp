@@ -6,9 +6,9 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardOfProduct"
+        android:id="@+id/cardDrink"
         android:layout_width="140dp"
-        android:layout_height="170dp"
+        android:layout_height="200dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,26 +21,28 @@
             android:background="@drawable/card_gradient">
 
             <ImageView
-                android:id="@+id/iconProduct"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                app:layout_constraintBottom_toTopOf="@+id/titleMenu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/ic_coffee_cup" />
-
-            <TextView
-                android:id="@+id/titleMenu"
+                android:id="@+id/iconDrink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:text="TextView"
-                style="@style/TitleOfMenu" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/ic_cappuccino" />
+
+            <TextView
+                android:id="@+id/nameDrink"
+                style="@style/TitleOfMenu"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="24dp"
+                android:gravity="left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Капучино" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

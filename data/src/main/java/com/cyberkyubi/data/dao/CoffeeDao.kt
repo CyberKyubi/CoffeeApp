@@ -6,6 +6,8 @@ import androidx.room.Query
 
 import com.cyberkyubi.data.entity.lower_level.CategoriesEntity
 import com.cyberkyubi.data.entity.lower_level.MenuEntity
+import com.cyberkyubi.data.entity.middle_level.DrinksEntity
+import com.cyberkyubi.data.entity.middle_level.FoodsEntity
 
 @Dao
 interface CoffeeDao {
@@ -16,9 +18,9 @@ interface CoffeeDao {
     @Query("SELECT menu_id, title, category_id, drawable_resource_name FROM menu WHERE category_id = :categoryId")
     suspend fun getMenuByCategoryId(categoryId: Int): List<MenuEntity>
 
-    @Insert
-    suspend fun insertAllCategories(listCategories: List<CategoriesEntity>)
+    @Query("SELECT drink_id, menu_id, name, drawable_resource_name FROM drinks WHERE menu_id = :menuId")
+    suspend fun getDrinkMenuById(menuId: Int): List<DrinksEntity>
 
-    @Insert
-    suspend fun insertAllMenu(listMenu: List<MenuEntity>)
+    @Query("SELECT food_id, menu_id, name, drawable_resource_name FROM foods WHERE menu_id = :menuId")
+    suspend fun getFoodMenuById(menuId: Int): List<FoodsEntity>
 }

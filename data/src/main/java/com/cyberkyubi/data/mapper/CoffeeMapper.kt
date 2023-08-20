@@ -2,7 +2,11 @@ package com.cyberkyubi.data.mapper
 
 import com.cyberkyubi.data.entity.lower_level.CategoriesEntity
 import com.cyberkyubi.data.entity.lower_level.MenuEntity
+import com.cyberkyubi.data.entity.middle_level.DrinksEntity
+import com.cyberkyubi.data.entity.middle_level.FoodsEntity
 import com.cyberkyubi.domain.model.CategoriesModel
+import com.cyberkyubi.domain.model.DrinkModel
+import com.cyberkyubi.domain.model.FoodModel
 import com.cyberkyubi.domain.model.MenuModel
 
 object CoffeeMapper {
@@ -31,28 +35,30 @@ object CoffeeMapper {
         return entityList.map { mapMenuEntityToMenuModel(it) }
     }
 
-    // add
-    private fun mapCategoriesModelToCategoriesEntity(model: CategoriesModel) : CategoriesEntity {
-        return CategoriesEntity(
-            categoryId = model.categoryId,
-            title = model.title
-        )
-    }
-    fun mapListCategoriesModelToListCategoriesEntity(modelList: List<CategoriesModel>) : List<CategoriesEntity> {
-        return modelList.map { mapCategoriesModelToCategoriesEntity(it) }
-    }
-
-    // add
-    private fun mapMenuModelToMenuEntity(model: MenuModel) : MenuEntity {
-        return MenuEntity(
-            menuId = model.menuId,
-            categoryId = model.categoryId,
-            title = model.title,
-            drawableResourceName = model.drawableResourceName
+    private fun mapDrinksEntityToDrinkModel(entity: DrinksEntity) : DrinkModel {
+        return DrinkModel(
+            drinkId = entity.drinkId,
+            menuId = entity.menuId,
+            name = entity.name,
+            drawableResourceName = entity.drawableResourceName
         )
     }
 
-    fun mapListMenuModelToListMenuEntity(modelList: List<MenuModel>) : List<MenuEntity> {
-        return modelList.map { mapMenuModelToMenuEntity(it) }
+    fun mapListDrinksEntityToListDrinkModel(entityList: List<DrinksEntity>) : List<DrinkModel> {
+        return entityList.map { mapDrinksEntityToDrinkModel(it) }
     }
+
+   private fun mapFoodsEntityToFoodModel(entity: FoodsEntity) : FoodModel {
+        return FoodModel(
+            foodId = entity.foodId,
+            menuId = entity.menuId,
+            name = entity.name,
+            drawableResourceName = entity.drawableResourceName
+        )
+   }
+
+    fun mapListFoodsEntityToListFoodModel(entityList: List<FoodsEntity>) : List<FoodModel> {
+        return entityList.map { mapFoodsEntityToFoodModel(it) }
+    }
+
 }

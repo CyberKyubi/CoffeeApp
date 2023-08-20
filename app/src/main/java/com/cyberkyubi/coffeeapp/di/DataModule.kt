@@ -10,7 +10,7 @@ import com.cyberkyubi.domain.repository.CoffeeRepository
 val dataModule = module {
 
     single {
-        Room.databaseBuilder(get(), CoffeeDatabase::class.java, "coffee_app2").build()
+        Room.databaseBuilder(get(), CoffeeDatabase::class.java, "coffee_app_01.db").build()
     }
     single {
         get<CoffeeDatabase>().getCoffeeDao()

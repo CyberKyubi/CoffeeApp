@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "menu",
-    indices = [Index("menu_id")],
+    indices = [Index("menu_id"), Index("category_id")],
     foreignKeys = [
         ForeignKey(
             entity = CategoriesEntity::class,

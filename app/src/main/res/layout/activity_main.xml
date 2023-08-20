@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pageBackgroundBlack"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.activity.MainActivity">
 
     <TextView
         android:id="@+id/textView"
+        style="@style/PageTitle"
         android:layout_width="wrap_content"
         android:layout_height="67dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/MainPageTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -54,12 +54,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <GridView
-        android:id="@+id/menuGridView"
+        android:id="@+id/mainGridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:horizontalSpacing="5dp"

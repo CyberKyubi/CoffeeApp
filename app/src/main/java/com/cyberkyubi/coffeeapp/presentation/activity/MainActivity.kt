@@ -1,4 +1,4 @@
-package com.cyberkyubi.coffeeapp.presentation
+package com.cyberkyubi.coffeeapp.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,8 +9,10 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.cyberkyubi.coffeeapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-import com.cyberkyubi.coffeeapp.adapter.MenuGridViewAdapter
+import com.cyberkyubi.coffeeapp.adapter.MainGridAdapter
 import com.cyberkyubi.coffeeapp.databinding.ActivityMainBinding
+import com.cyberkyubi.coffeeapp.presentation.viewmodel.MainViewModel
+import com.cyberkyubi.coffeeapp.presentation.viewmodel.StateOfMenu
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModel()
 
     private lateinit var gridView: GridView
-    private lateinit var gridViewAdapter: MenuGridViewAdapter
+    private lateinit var gridAdapter: MainGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,12 +60,11 @@ class MainActivity : AppCompatActivity() {
         beverageTextView.setOnClickListener { viewModel.getBeverageMenu() }
         foodTextView.setOnClickListener { viewModel.getFoodMenu() }
 
+        gridView = findViewById(R.id.mainGridView)
+        gridAdapter = MainGridAdapter(this, emptyList())
+        gridView.adapter = gridAdapter
 
-        gridView = findViewById(R.id.menuGridView)
-        gridViewAdapter = MenuGridViewAdapter(this, emptyList())
-        gridView.adapter = gridViewAdapter
-
-        viewModel.menuLive.observe(this) { gridViewAdapter.updateMenu(it) }
+        viewModel.menuLive.observe(this) { gridAdapter.updateMenu(it) }
 
     }
 

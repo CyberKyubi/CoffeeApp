@@ -1,6 +1,8 @@
 package com.cyberkyubi.domain.repository
 
 import com.cyberkyubi.domain.model.CategoriesModel
+import com.cyberkyubi.domain.model.DrinkModel
+import com.cyberkyubi.domain.model.FoodModel
 import com.cyberkyubi.domain.model.MenuModel
 
 interface CoffeeRepository {
@@ -9,7 +11,8 @@ interface CoffeeRepository {
 
     suspend fun getMenuByCategoryId(categoryId: Int): List<MenuModel>
 
-    suspend fun insertAllCategories(listCategories: List<CategoriesModel>)
+    suspend fun getDrinkMenuById(menuId: Int): List<DrinkModel>
 
-    suspend fun insertAllMenu(listMenu: List<MenuModel>)
+    suspend fun getFoodMenuById(menuId: Int): List<FoodModel>
 }
+

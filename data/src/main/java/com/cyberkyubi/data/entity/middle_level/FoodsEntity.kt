@@ -10,7 +10,7 @@ import com.cyberkyubi.data.entity.lower_level.MenuEntity
 
 @Entity(
     tableName = "foods",
-    indices = [Index("food_id")],
+    indices = [Index("food_id"), Index("menu_id")],
     foreignKeys = [
         ForeignKey(
             entity = MenuEntity::class,

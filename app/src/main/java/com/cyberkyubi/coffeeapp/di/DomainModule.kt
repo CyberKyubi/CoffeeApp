@@ -1,15 +1,16 @@
 package com.cyberkyubi.coffeeapp.di
 
-import com.cyberkyubi.domain.usecase.AddNewCategoriesUseCase
-import com.cyberkyubi.domain.usecase.AddNewMenu
 import org.koin.dsl.module
 
-import com.cyberkyubi.domain.usecase.GetBeveragesMenuUseCase
+import com.cyberkyubi.domain.usecase.GetBeverageMenuUseCase
 import com.cyberkyubi.domain.usecase.GetCategoriesUseCase
+import com.cyberkyubi.domain.usecase.GetDrinkMenuByIdUseCase
+import com.cyberkyubi.domain.usecase.GetFoodMenuByIdUseCase
 import com.cyberkyubi.domain.usecase.GetFoodMenuUseCase
 
 val domainModule = module {
 
+    // MainViewModel
     factory {
         GetCategoriesUseCase(
             coffeeRepository = get()
@@ -17,24 +18,27 @@ val domainModule = module {
     }
 
     factory {
-        AddNewCategoriesUseCase(
-            coffeeRepository = get()
-        )
-    }
-    factory {
-        AddNewMenu(
-            coffeeRepository = get()
-        )
-    }
-
-    factory {
-       GetBeveragesMenuUseCase(
+       GetBeverageMenuUseCase(
            coffeeRepository = get()
        )
     }
 
     factory {
         GetFoodMenuUseCase(
+            coffeeRepository = get()
+        )
+    }
+
+
+    // ProductListingViewModel
+    factory {
+        GetFoodMenuByIdUseCase(
+            coffeeRepository = get()
+        )
+    }
+
+    factory {
+        GetDrinkMenuByIdUseCase(
             coffeeRepository = get()
         )
     }
