@@ -9,21 +9,21 @@ import android.widget.TextView
 import com.cyberkyubi.coffeeapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-import com.cyberkyubi.coffeeapp.databinding.ActivityDrinksBinding
+import com.cyberkyubi.coffeeapp.databinding.ActivityDrinksListBinding
 import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksViewModel
-import com.cyberkyubi.coffeeapp.adapter.DrinksGridAdapter
+import com.cyberkyubi.coffeeapp.adapter.DrinksListGridAdapter
 
-class DrinksActivity : AppCompatActivity() {
+class DrinksListActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDrinksBinding
+    private lateinit var binding: ActivityDrinksListBinding
     private val viewModel: DrinksViewModel by viewModel()
 
     private lateinit var gridView: GridView
-    private lateinit var gridAdapter: DrinksGridAdapter
+    private lateinit var gridAdapter: DrinksListGridAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDrinksBinding.inflate(layoutInflater).also { setContentView(it.root) }
+        binding = ActivityDrinksListBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         val bundle = intent.extras
         if (bundle != null) {
@@ -33,14 +33,14 @@ class DrinksActivity : AppCompatActivity() {
             )
         }
 
-        val backButton = findViewById<ImageView>(R.id.backButton)
+        val backButton = findViewById<ImageView>(R.id.backToMenuButton)
         backButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
         val pageTitleTextView = findViewById<TextView>(R.id.pageTitle)
         viewModel.titleMenuLive.observe(this) {pageTitleTextView.text = it }
 
         gridView = findViewById(R.id.drinksGridView)
-        gridAdapter = DrinksGridAdapter(this, emptyList())
+        gridAdapter = DrinksListGridAdapter(this, emptyList())
         gridView.adapter = gridAdapter
 
         viewModel.drinkMenuLive.observe(this) { gridAdapter.updateDrinks(it) }

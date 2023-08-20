@@ -12,7 +12,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.cardview.widget.CardView
 import com.cyberkyubi.coffeeapp.R
 
-import com.cyberkyubi.coffeeapp.presentation.activity.DrinksActivity
+import com.cyberkyubi.coffeeapp.presentation.activity.DrinksListActivity
 import com.cyberkyubi.domain.model.MenuModel
 
 class MainGridAdapter(
@@ -82,13 +82,13 @@ class MainGridAdapter(
     }
 
     private fun startDrinksActivity(menuModel: MenuModel) {
-        val intent = Intent(context, DrinksActivity::class.java)
+        val intent = Intent(context, DrinksListActivity::class.java)
         startActivity(intent = intent, menuModel = menuModel)
     }
 
     private fun startFoodsActivity(menuModel: MenuModel) {
         // TODO: FoodsActivity
-        val intent = Intent(context, DrinksActivity::class.java)
+        val intent = Intent(context, DrinksListActivity::class.java)
         startActivity(intent = intent, menuModel = menuModel)
     }
 

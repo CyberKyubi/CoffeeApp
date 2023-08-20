@@ -14,7 +14,10 @@
         android:theme="@style/Theme.CoffeeApp"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.activity.DrinksActivity"
+            android:name=".presentation.activity.DrinkDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activity.DrinksListActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.activity.MainActivity"

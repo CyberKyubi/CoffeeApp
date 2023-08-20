@@ -1,5 +1,6 @@
 package com.cyberkyubi.coffeeapp.di
 
+import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinkDetailsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -21,4 +22,11 @@ val appModule = module {
             getDrinkMenuByIdUseCase = get()
         )
     }
+
+    viewModel {
+        DrinkDetailsViewModel(
+
+        )
+    }
+
 }

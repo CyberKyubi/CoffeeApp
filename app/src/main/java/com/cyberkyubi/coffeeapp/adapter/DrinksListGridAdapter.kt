@@ -13,7 +13,7 @@ import com.cyberkyubi.coffeeapp.R
 import androidx.cardview.widget.CardView
 import com.cyberkyubi.domain.model.DrinkModel
 
-class DrinksGridAdapter(
+class DrinksListGridAdapter(
     private var context: Context,
     private var listDrinks: List<DrinkModel>
 ) : BaseAdapter() {
@@ -38,7 +38,7 @@ class DrinksGridAdapter(
         val holder: ViewHolder
 
         if (convertView == null) {
-            view = inflater.inflate(R.layout.gridview_drinks, parent, false)
+            view = inflater.inflate(R.layout.gridview_drinks_list, parent, false)
             holder = ViewHolder(view)
             view.tag = holder
         } else {
