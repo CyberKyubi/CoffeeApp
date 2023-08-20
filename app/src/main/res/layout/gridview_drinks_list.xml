@@ -7,9 +7,11 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardDrink"
-        android:layout_width="140dp"
-        android:layout_height="200dp"
-        app:cardCornerRadius="10dp"
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,27 +20,29 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/card_gradient">
+            android:background="@color/backgroundCard">
 
-            <ImageView
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iconDrink"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="170dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/ic_cappuccino" />
+                app:shapeAppearanceOverlay="@style/roundedCornersDrinkImage"
+                tools:srcCompat="@drawable/ic_coffee" />
 
             <TextView
                 android:id="@+id/nameDrink"
                 style="@style/TitleOfMenu"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="24dp"
-                android:gravity="left"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="Капучино" />

@@ -2,28 +2,38 @@
 <resources>
 
     <style name="PageTitle">
-        <item name="android:fontFamily">@font/montserrat_alternates_bold</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/philosopher_bold</item>
+        <item name="android:textColor">@color/titleBlack</item>
+        <item name="android:textSize">34sp</item>
     </style>
 
     <style name="Category">
-        <item name="android:fontFamily">@font/montserrat_alternates_bold</item>
+        <item name="android:fontFamily">@font/yeseva_one</item>
         <item name="android:padding">4dp</item>
-        <item name="android:textColor">@color/textViewGray</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/textViewBrown</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="TitleOfMenu">
-        <item name="android:fontFamily">@font/quattrocento_bold</item>
+        <item name="android:fontFamily">@font/cormorant_infant_medium</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="roundedCornersImageView" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>
+    </style>
+
+    <style name="roundedCornersDrinkImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5dp</item>
+    </style>
+
+    <style name="backButton">
+        <item name="android:background">@drawable/back_button</item>
+        <item name="android:src">@drawable/ic_left_arrow2</item>
     </style>
 
 </resources>

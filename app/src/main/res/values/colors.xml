@@ -3,10 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    <color name="pageBackgroundBlack">#171413</color>-->
-    <color name="pageBackgroundBlack">#0c0f14</color>
-    <color name="textViewGray">#605A57</color>
-    <color name="textViewBrown">#9E5E3B</color>
+    <color name="pageBackgroundCream">#FCEDB9</color>
+    <color name="titleBlack">#120B08</color>
+    <color name="textViewBrown">#AE936F</color>
+    <color name="textViewBlack">#120B08</color>
+    <color name="backgroundCard">#40312F</color>
+
+
+
     <color name="transparentTitleDrink">#95605A57</color>
 
     <color name="cardBackgroundGray">#252932</color>

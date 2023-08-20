@@ -35,22 +35,22 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.stateOfMenuLive.observe(this) {stateOfMenu ->
             if (stateOfMenu == StateOfMenu.BeveragesMenu) {
-                beverageTextView.setTextColor(this.getColor(R.color.textViewBrown))
+                beverageTextView.setTextColor(this.getColor(R.color.textViewBlack))
                 beverageTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, dotDrawableBottom
                 )
 
-                foodTextView.setTextColor(this.getColor(R.color.textViewGray))
+                foodTextView.setTextColor(this.getColor(R.color.textViewBrown))
                 foodTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, null
                 )
             } else if (stateOfMenu == StateOfMenu.FoodMenu) {
-                foodTextView.setTextColor(this.getColor(R.color.textViewBrown))
+                foodTextView.setTextColor(this.getColor(R.color.textViewBlack))
                 foodTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, dotDrawableBottom
                 )
 
-                beverageTextView.setTextColor(this.getColor(R.color.textViewGray))
+                beverageTextView.setTextColor(this.getColor(R.color.textViewBrown))
                 beverageTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, null
                 )

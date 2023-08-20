@@ -59,7 +59,7 @@ class MainGridAdapter(
         }
 
         val drawable = when (item.categoryId) {
-            1 -> AppCompatResources.getDrawable(context, R.drawable.ic_coffee_cup)
+            1 -> AppCompatResources.getDrawable(context, R.drawable.ic_coffee_drinks)
             2 -> AppCompatResources.getDrawable(context, R.drawable.ic_sweets)
             else -> {
                 AppCompatResources.getDrawable(context, R.drawable.ic_warning)

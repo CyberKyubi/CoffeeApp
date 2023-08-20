@@ -3,4 +3,5 @@
     <string name="title">Кофейный мир\nв одном приложении</string>
     <string name="beverages">Напитки</string>
     <string name="food">Еда</string>
+    <string name="menu">Меню</string>
 </resources>

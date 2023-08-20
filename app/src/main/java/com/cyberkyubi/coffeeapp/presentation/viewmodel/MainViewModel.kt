@@ -40,9 +40,9 @@ class MainViewModel(
 
     private fun getInitialMenu() {
         viewModelScope.launch {
-            val (firstCategory, secondCategory) = getCategoriesUseCase.execute()
-            beverageCategoryMutableLive.value = firstCategory.title
-            foodCategoryMutableLive.value = secondCategory.title
+            val (beverageCategory, foodCategory) = getCategoriesUseCase.execute()
+            beverageCategoryMutableLive.value = beverageCategory.title
+            foodCategoryMutableLive.value = foodCategory.title
         }
 
         getBeverageMenu()

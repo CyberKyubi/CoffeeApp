@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pageBackgroundBlack"
+    android:background="@color/pageBackgroundCream"
     tools:context=".presentation.activity.MainActivity">
 
     <TextView
         android:id="@+id/textView"
         style="@style/PageTitle"
         android:layout_width="wrap_content"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +29,7 @@
 
         <TextView
             android:id="@+id/beverageTextView"
+            style="@style/Category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -37,8 +38,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
             tools:drawableBottom="@drawable/dot"
-            tools:text="@string/beverages"
-            style="@style/Category" />
+            tools:text="@string/beverages" />
 
         <TextView
             android:id="@+id/foodTextView"
@@ -57,16 +57,16 @@
         android:id="@+id/mainGridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:horizontalSpacing="5dp"
         android:numColumns="auto_fit"
         android:padding="4dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="25dp"
+        android:verticalSpacing="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

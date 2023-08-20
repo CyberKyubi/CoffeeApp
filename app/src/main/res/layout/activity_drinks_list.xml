@@ -4,49 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pageBackgroundBlack"
+    android:background="@color/pageBackgroundCream"
     tools:context=".presentation.activity.DrinksListActivity">
 
     <ImageView
         android:id="@+id/backToMenuButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_left_arrow"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"/>
+        app:srcCompat="@drawable/ic_left_arrow3" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/philosopher_bold"
+        android:text="@string/menu"
+        android:textColor="@color/textViewBlack"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.42"
+        app:layout_constraintStart_toEndOf="@+id/backToMenuButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/pageTitle"
         style="@style/PageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/border_bottom"
+        android:fontFamily="@font/philosopher_bold"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toEndOf="@+id/backToMenuButton"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:text="Горячий кофе" />
 
     <GridView
         android:id="@+id/drinksGridView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:horizontalSpacing="5dp"
+        android:horizontalSpacing="0dp"
         android:numColumns="auto_fit"
-        android:padding="4dp"
         android:stretchMode="columnWidth"
-        android:verticalSpacing="25dp"
+        android:verticalSpacing="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pageTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle">
+
+    </GridView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

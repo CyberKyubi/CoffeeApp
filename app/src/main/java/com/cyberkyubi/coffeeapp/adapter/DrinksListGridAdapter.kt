@@ -48,7 +48,7 @@ class DrinksListGridAdapter(
 
         val item = getItem(position)
 
-        holder.drawableResource.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.ic_cappuccino))
+        holder.drawableResource.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.ic_coffee))
         holder.nameDrink.text = item.name
         return view
     }
