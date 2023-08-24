@@ -53,25 +53,35 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <GridView
-        android:id="@+id/mainGridView"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="40dp"
-        android:gravity="center"
-        android:horizontalSpacing="5dp"
-        android:numColumns="auto_fit"
-        android:padding="4dp"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="5dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <!--    <GridView-->
+<!--        android:id="@+id/mainGridView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="12dp"-->
+<!--        android:layout_marginBottom="40dp"-->
+<!--        android:gravity="center"-->
+<!--        android:horizontalSpacing="5dp"-->
+<!--        android:numColumns="auto_fit"-->
+<!--        android:padding="4dp"-->
+<!--        android:stretchMode="columnWidth"-->
+<!--        android:verticalSpacing="5dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
