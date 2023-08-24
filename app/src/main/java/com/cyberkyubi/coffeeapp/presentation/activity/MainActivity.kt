@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.stateOfMenuLive.observe(this) {stateOfMenu ->
             if (stateOfMenu == StateOfMenu.BeveragesMenu) {
-                beverageTextView.setTextColor(this.getColor(R.color.textViewBlack))
+                beverageTextView.setTextColor(this.getColor(R.color.biancaCream))
                 beverageTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, dotDrawableBottom
                 )
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     null, null, null, null
                 )
             } else if (stateOfMenu == StateOfMenu.FoodMenu) {
-                foodTextView.setTextColor(this.getColor(R.color.textViewBlack))
+                foodTextView.setTextColor(this.getColor(R.color.biancaCream))
                 foodTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null, null, null, dotDrawableBottom
                 )

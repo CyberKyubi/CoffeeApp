@@ -3,7 +3,7 @@
 
     <style name="PageTitle">
         <item name="android:fontFamily">@font/philosopher_bold</item>
-        <item name="android:textColor">@color/titleBlack</item>
+        <item name="android:textColor">@color/biancaCream</item>
         <item name="android:textSize">34sp</item>
     </style>
 
@@ -33,7 +33,7 @@
 
     <style name="backButton">
         <item name="android:background">@drawable/back_button</item>
-        <item name="android:src">@drawable/ic_left_arrow2</item>
+        <item name="android:src">@drawable/ic_left_arrow3</item>
     </style>
 
 </resources>

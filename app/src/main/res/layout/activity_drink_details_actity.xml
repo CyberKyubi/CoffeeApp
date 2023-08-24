@@ -9,47 +9,45 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/drinkImage"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
         android:scaleType="centerCrop"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbarAlwaysDrawVerticalTrack="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundedCornersDrinkImage"
-        app:srcCompat="@drawable/ic_coffee" />
+        app:shapeAppearanceOverlay="@style/roundedCornersImageView"
+        tools:srcCompat="@drawable/ic_coffee" />
+
+    <ImageView
+        android:id="@+id/backToDrinksButton"
+        style="@style/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@drawable/title_drink"
+        android:background="@drawable/drink_title_block"
         app:layout_constraintBottom_toBottomOf="@+id/drinkImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/drinkName"
-            android:layout_width="wrap_content"
+            style="@style/TitleOfMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/white"
-            android:textSize="34sp"
+            android:layout_marginTop="32dp"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.101"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Капучино" />
+            tools:text="Раф банановое мороженное" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/backToDrinksListButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_left_arrow" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
