@@ -14,7 +14,8 @@ import com.cyberkyubi.domain.usecase.GetFoodMenuUseCase
 enum class StateOfMenu {
     Initial,
     BeveragesMenu,
-    FoodMenu
+    FoodsMenu,
+    ProductsMenu
 }
 
 class MainViewModel(
@@ -25,8 +26,10 @@ class MainViewModel(
 
     private val beverageCategoryMutableLive = MutableLiveData<String>()
     private val foodCategoryMutableLive = MutableLiveData<String>()
+    private val productCategoryMutableLive = MutableLiveData<String>()
     val beverageCategoryLive: LiveData<String> = beverageCategoryMutableLive
     val foodCategoryLive: LiveData<String> = foodCategoryMutableLive
+    val productCategoryLive: LiveData<String> = productCategoryMutableLive
 
     private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val menuLive: LiveData<List<MenuModel>> = menuMutableLive
@@ -40,9 +43,10 @@ class MainViewModel(
 
     private fun getInitialMenu() {
         viewModelScope.launch {
-            val (beverageCategory, foodCategory) = getCategoriesUseCase.execute()
+            val (beverageCategory, foodCategory, productCategory) = getCategoriesUseCase.execute()
             beverageCategoryMutableLive.value = beverageCategory.title
             foodCategoryMutableLive.value = foodCategory.title
+            productCategoryMutableLive.value = productCategory.title
         }
 
         getBeverageMenu()
@@ -60,12 +64,20 @@ class MainViewModel(
     }
 
     fun getFoodMenu() {
-        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.FoodMenu) {
-            currentStateOfMenuMutableLiveData.value = StateOfMenu.FoodMenu
+        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.FoodsMenu) {
+            currentStateOfMenuMutableLiveData.value = StateOfMenu.FoodsMenu
 
             viewModelScope.launch {
                 menuMutableLive.value = getFoodMenuUseCase.execute(categoryId = 2)
             }
+        }
+    }
+
+    fun getProductMenu() {
+        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.ProductsMenu) {
+            currentStateOfMenuMutableLiveData.value = StateOfMenu.ProductsMenu
+
+
         }
     }
 }

@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cyberkyubi.coffeeapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,21 +30,36 @@ class MainActivity : AppCompatActivity() {
 
         val beverageTextView = findViewById<TextView>(R.id.beverageTextView)
         val foodTextView = findViewById<TextView>(R.id.foodTextView)
+        val productTextView = findViewById<TextView>(R.id.productTextView)
         val dotDrawableBottom = AppCompatResources.getDrawable(this, R.drawable.dot)
 
         viewModel.beverageCategoryLive.observe(this) { beverageTextView.text = it }
         viewModel.foodCategoryLive.observe(this) { foodTextView.text = it }
+        viewModel.productCategoryLive.observe(this) {productTextView.text = it}
         viewModel.stateOfMenuLive.observe(this) {stateOfMenu ->
-            drawActiveMenu(
-                stateOfMenu = stateOfMenu,
-                beverageTextView = beverageTextView,
-                foodTextView = foodTextView,
-                dotDrawableBottom = dotDrawableBottom
-            )
+
+            setMenuStyle(beverageTextView, isActive = false, dotDrawableBottom = null)
+            setMenuStyle(foodTextView, isActive = false, dotDrawableBottom = null)
+            setMenuStyle(productTextView, isActive = false, dotDrawableBottom = null)
+
+            when (stateOfMenu) {
+                StateOfMenu.BeveragesMenu -> {
+                    setMenuStyle(beverageTextView, isActive = true, dotDrawableBottom)
+                }
+                StateOfMenu.FoodsMenu -> {
+                    setMenuStyle(foodTextView, isActive = true, dotDrawableBottom)
+                }
+                StateOfMenu.ProductsMenu -> {
+                    setMenuStyle(productTextView, isActive = true, dotDrawableBottom)
+                }
+
+                else -> {}
+            }
         }
 
         beverageTextView.setOnClickListener { viewModel.getBeverageMenu() }
         foodTextView.setOnClickListener { viewModel.getFoodMenu() }
+        productTextView.setOnClickListener { viewModel.getProductMenu() }
 
         recyclerAdapter = MenuRecyclerAdapter(emptyList())
         viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(adapter = recyclerAdapter, it) }
@@ -55,34 +69,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun drawActiveMenu(
-        stateOfMenu: StateOfMenu,
-        beverageTextView: TextView,
-        foodTextView: TextView,
-        dotDrawableBottom: Drawable?
-    ) {
-        if (stateOfMenu == StateOfMenu.BeveragesMenu) {
-            beverageTextView.setTextColor(this.getColor(R.color.biancaCream))
-            beverageTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                null, null, null, dotDrawableBottom
-            )
+    private fun setMenuStyle(menuTextView: TextView, isActive: Boolean, dotDrawableBottom: Drawable?) {
+        var color: Int = R.color.textViewBrown
+        var drawable: Drawable? = null
 
-            foodTextView.setTextColor(this.getColor(R.color.textViewBrown))
-            foodTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                null, null, null, null
-            )
-        } else if (stateOfMenu == StateOfMenu.FoodMenu) {
-            foodTextView.setTextColor(this.getColor(R.color.biancaCream))
-            foodTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                null, null, null, dotDrawableBottom
-            )
-
-            beverageTextView.setTextColor(this.getColor(R.color.textViewBrown))
-            beverageTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                null, null, null, null
-            )
+        if (isActive) {
+            color = R.color.biancaCream
+            drawable = dotDrawableBottom
         }
+
+        menuTextView.setTextColor(this.getColor(color))
+        menuTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null, null, null, drawable
+        )
     }
+
 
     override fun onStart() {
         super.onStart()
