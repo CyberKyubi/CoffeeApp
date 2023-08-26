@@ -4,5 +4,7 @@
     <string name="beverages">Напитки</string>
     <string name="food">Еда</string>
     <string name="products">Продукция Barista</string>
+    <string name="search_hint">Найди свое кофе</string>
+
     <string name="menu">Меню</string>
 </resources>

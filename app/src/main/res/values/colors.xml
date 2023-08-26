@@ -14,6 +14,8 @@
     <color name="backgroundCard">#40312F</color>
 
 
+    <color name="transparentBlack10">#10000000</color>
+    <color name="transparentBlack20">#20000000</color>
 
     <color name="transparentTitleDrink">#95605A57</color>
 
