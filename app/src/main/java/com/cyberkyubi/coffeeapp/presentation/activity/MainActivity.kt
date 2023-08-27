@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cyberkyubi.coffeeapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -28,53 +28,52 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        val beverageTextView = findViewById<TextView>(R.id.beverageTextView)
-        val foodTextView = findViewById<TextView>(R.id.foodTextView)
-        val productTextView = findViewById<TextView>(R.id.productTextView)
+        val beveragesTextView = findViewById<TextView>(R.id.beverages_text_view)
+        val foodsTextView = findViewById<TextView>(R.id.foods_text_view)
+        val productsTextView = findViewById<TextView>(R.id.products_text_view)
         val dotDrawableBottom = AppCompatResources.getDrawable(this, R.drawable.dot)
 
-        viewModel.beverageCategoryLive.observe(this) { beverageTextView.text = it }
-        viewModel.foodCategoryLive.observe(this) { foodTextView.text = it }
-        viewModel.productCategoryLive.observe(this) {productTextView.text = it}
+        viewModel.beverageCategoryLive.observe(this) { beveragesTextView.text = it }
+        viewModel.foodCategoryLive.observe(this) { foodsTextView.text = it }
+        viewModel.productCategoryLive.observe(this) {productsTextView.text = it}
         viewModel.stateOfMenuLive.observe(this) {stateOfMenu ->
 
-            setMenuStyle(beverageTextView, isActive = false, dotDrawableBottom = null)
-            setMenuStyle(foodTextView, isActive = false, dotDrawableBottom = null)
-            setMenuStyle(productTextView, isActive = false, dotDrawableBottom = null)
+            setMenuStyle(beveragesTextView, isActive = false, dotDrawableBottom = null)
+            setMenuStyle(foodsTextView, isActive = false, dotDrawableBottom = null)
+            setMenuStyle(productsTextView, isActive = false, dotDrawableBottom = null)
 
             when (stateOfMenu) {
                 StateOfMenu.BeveragesMenu -> {
-                    setMenuStyle(beverageTextView, isActive = true, dotDrawableBottom)
+                    setMenuStyle(beveragesTextView, isActive = true, dotDrawableBottom)
                 }
                 StateOfMenu.FoodsMenu -> {
-                    setMenuStyle(foodTextView, isActive = true, dotDrawableBottom)
+                    setMenuStyle(foodsTextView, isActive = true, dotDrawableBottom)
                 }
                 StateOfMenu.ProductsMenu -> {
-                    setMenuStyle(productTextView, isActive = true, dotDrawableBottom)
+                    setMenuStyle(productsTextView, isActive = true, dotDrawableBottom)
                 }
 
                 else -> {}
             }
         }
 
-        beverageTextView.setOnClickListener { viewModel.getBeverageMenu() }
-        foodTextView.setOnClickListener { viewModel.getFoodMenu() }
-        productTextView.setOnClickListener { viewModel.getProductMenu() }
+        beveragesTextView.setOnClickListener { viewModel.getBeverageMenu() }
+        foodsTextView.setOnClickListener { viewModel.getFoodMenu() }
+        productsTextView.setOnClickListener { viewModel.getProductMenu() }
 
         recyclerAdapter = MenuRecyclerAdapter(emptyList())
         viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(adapter = recyclerAdapter, it) }
-        recyclerView = findViewById(R.id.menuRecyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView = findViewById(R.id.menu_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = recyclerAdapter
-
     }
 
     private fun setMenuStyle(menuTextView: TextView, isActive: Boolean, dotDrawableBottom: Drawable?) {
-        var color: Int = R.color.textViewBrown
+        var color: Int = R.color.text_view_brown
         var drawable: Drawable? = null
 
         if (isActive) {
-            color = R.color.biancaCream
+            color = R.color.bianca_cream
             drawable = dotDrawableBottom
         }
 

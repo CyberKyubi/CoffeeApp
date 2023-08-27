@@ -8,21 +8,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.cyberkyubi.coffeeapp.R
 
 import com.cyberkyubi.coffeeapp.presentation.activity.DrinksListActivity
 import com.cyberkyubi.domain.model.MenuModel
 
-class MenuRecyclerAdapter(
-    private var menu: List<MenuModel>
-): RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
+class MenuRecyclerAdapter(private var menu: List<MenuModel>): RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
     class MenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val cardMenu: CardView = itemView.findViewById(R.id.cardMenu)
-        val drawableResource: ImageView = itemView.findViewById(R.id.iconMenu)
-        val titleMenu: TextView = itemView.findViewById(R.id.titleMenu)
+        val drawableResource: ImageView = itemView.findViewById(R.id.menu_image_view)
+        val menuTitle: TextView = itemView.findViewById(R.id.menu_title_text_view)
+        val seasonalSpecials: TextView = itemView.findViewById(R.id.seasonal_specials_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
@@ -36,20 +33,26 @@ class MenuRecyclerAdapter(
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val item: MenuModel = menu[position]
 
-        holder.cardMenu.setOnClickListener {
-            setOnClickListener(context = holder.itemView.context, item = item)
-        }
+//        holder.cardMenu.setOnClickListener {
+//            setOnClickListener(context = holder.itemView.context, item = item)
+//        }
 
         val drawable = when (item.categoryId) {
             1 -> AppCompatResources.getDrawable(holder.itemView.context, R.drawable.ic_coffee_drinks)
-            2 -> AppCompatResources.getDrawable(holder.itemView.context, R.drawable.ic_sweets)
+            2 -> AppCompatResources.getDrawable(holder.itemView.context, R.drawable.ic_desserts)
             else -> {
-                AppCompatResources.getDrawable(holder.itemView.context, R.drawable.ic_warning)
+                AppCompatResources.getDrawable(holder.itemView.context, R.drawable.ic_coffee_drinks)
             }
         }
 
+        holder.seasonalSpecials.text = null
+        // TODO("it's hardcode")
+        if (item.title == "Весна и лето") {
+            holder.seasonalSpecials.text = holder.itemView.context.getString(R.string.seasonal_specials)
+        }
+
         holder.drawableResource.setImageDrawable(drawable)
-        holder.titleMenu.text = item.title
+        holder.menuTitle.text = item.title
     }
 
     fun updateMenu(adapter: MenuRecyclerAdapter, newMenu: List<MenuModel>) {

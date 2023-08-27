@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">CoffeeApp</string>
-    <string name="title">Кофейный мир\nв одном приложении</string>
+    <string name="page_title">Кофейный мир\nв одном приложении</string>
+
+    <!-- Categories -->
     <string name="beverages">Напитки</string>
     <string name="food">Еда</string>
     <string name="products">Продукция Barista</string>
-    <string name="search_hint">Найди свое кофе</string>
 
+    <!-- Menu card -->
+    <string name="seasonal_specials">Сезонные новинки</string>
+
+
+    <string name="search_hint">Найди свое кофе</string>
     <string name="menu">Меню</string>
 </resources>

@@ -19,8 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundCard">
+            android:layout_height="match_parent">
 
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -32,12 +31,12 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearanceOverlay="@style/roundedCornersDrinkImage"
+                app:shapeAppearanceOverlay="@style/roundedCornersMenuImageView"
                 tools:srcCompat="@drawable/ic_coffee" />
 
             <TextView
                 android:id="@+id/nameDrink"
-                style="@style/TitleOfMenu"
+                style="@style/titleOfMenu"
                 android:layout_width="120dp"
                 android:layout_height="70dp"
                 android:layout_marginBottom="8dp"

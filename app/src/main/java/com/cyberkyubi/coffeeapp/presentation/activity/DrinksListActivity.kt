@@ -36,7 +36,7 @@ class DrinksListActivity : AppCompatActivity() {
         val backButton = findViewById<ImageView>(R.id.backToMenuButton)
         backButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-        val pageTitleTextView = findViewById<TextView>(R.id.pageTitle)
+        val pageTitleTextView = findViewById<TextView>(R.id.pageTitleOLD)
         viewModel.titleMenuLive.observe(this) {pageTitleTextView.text = it }
 
         gridView = findViewById(R.id.drinksGridView)

@@ -7,9 +7,26 @@
     android:background="@color/pageBackgroundCream"
     tools:context=".presentation.activity.DrinksListActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_constraint_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            android:hint="@string/search_hint" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <ImageView
         android:id="@+id/backToMenuButton"
-        style="@style/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -24,7 +41,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="@font/philosopher_bold"
         android:text="@string/menu"
-        android:textColor="@color/biancaCream"
+        android:textColor="@color/bianca_cream"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.397"
@@ -32,12 +49,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/pageTitle"
-        style="@style/PageTitle"
+        android:id="@+id/pageTitleOLD"
+        style="@style/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/border_bottom"
+        android:background="@drawable/border_bottom__old"
         android:fontFamily="@font/philosopher_bold"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +78,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pageTitle">
+        app:layout_constraintTop_toBottomOf="@+id/pageTitleOLD">
 
     </GridView>
 

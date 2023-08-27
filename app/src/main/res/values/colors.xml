@@ -3,22 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-<!--    <color name="pageBackgroundCream">#FCEDB9</color>-->
-    <color name="mainPageHeader">#292422</color>
+    <color name="main_page_header_brown">#292422</color>
+    <color name="bianca_cream">#FCEDB9</color>
+    <color name="text_view_brown">#AE8B72</color>
+
+
+
     <color name="pageBackgroundCream">#292422</color>
-<!--    <color name="titleBlack">#120B08</color>-->
-    <color name="biancaCream">#FCEDB9</color>
-<!--    <color name="textViewBrown">#AE936F</color>-->
-    <color name="textViewBrown">#AE8B72</color>
-    <color name="textViewBlack">#120B08</color>
-    <color name="backgroundCard">#40312F</color>
-
-
-    <color name="transparentBlack10">#10000000</color>
-    <color name="transparentBlack20">#20000000</color>
-
-    <color name="transparentTitleDrink">#95605A57</color>
-
-    <color name="cardBackgroundGray">#252932</color>
 
 </resources>

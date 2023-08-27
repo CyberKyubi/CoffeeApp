@@ -27,11 +27,10 @@ class MainViewModel(
     private val beverageCategoryMutableLive = MutableLiveData<String>()
     private val foodCategoryMutableLive = MutableLiveData<String>()
     private val productCategoryMutableLive = MutableLiveData<String>()
+    private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val beverageCategoryLive: LiveData<String> = beverageCategoryMutableLive
     val foodCategoryLive: LiveData<String> = foodCategoryMutableLive
     val productCategoryLive: LiveData<String> = productCategoryMutableLive
-
-    private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val menuLive: LiveData<List<MenuModel>> = menuMutableLive
 
     private var currentStateOfMenuMutableLiveData = MutableLiveData(StateOfMenu.Initial)
@@ -59,7 +58,6 @@ class MainViewModel(
             viewModelScope.launch {
                 menuMutableLive.value = getBeverageMenuUseCase.execute(categoryId = 1)
             }
-
         }
     }
 

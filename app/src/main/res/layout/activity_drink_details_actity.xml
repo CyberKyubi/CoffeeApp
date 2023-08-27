@@ -16,12 +16,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/roundedCornersImageView"
+        app:shapeAppearanceOverlay="@style/roundedCornersMenuImageView"
         tools:srcCompat="@drawable/ic_coffee" />
 
     <ImageView
         android:id="@+id/backToDrinksButton"
-        style="@style/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -32,14 +31,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="150dp"
-        android:background="@drawable/drink_title_block"
+        android:background="@drawable/drink_title_block__old"
         app:layout_constraintBottom_toBottomOf="@+id/drinkImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/drinkName"
-            style="@style/TitleOfMenu"
+            style="@style/titleOfMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
