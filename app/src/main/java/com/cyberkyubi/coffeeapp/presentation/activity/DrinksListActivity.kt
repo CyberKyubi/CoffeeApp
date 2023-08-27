@@ -21,6 +21,7 @@ class DrinksListActivity : AppCompatActivity() {
     private lateinit var gridView: GridView
     private lateinit var gridAdapter: DrinksListGridAdapter
 
+    // todo выводить название, иконки ингридиентов, цену, кнопку плюса
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDrinksListBinding.inflate(layoutInflater).also { setContentView(it.root) }
