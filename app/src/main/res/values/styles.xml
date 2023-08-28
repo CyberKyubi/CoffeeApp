@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="pageTitle">
+    <style name="mainPageTitle">
         <item name="android:fontFamily">@font/philosopher_bold</item>
         <item name="android:textColor">@color/bianca_cream</item>
         <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="pagesTitle">
+        <item name="android:fontFamily">@font/sora_semibold</item>
+        <item name="android:textColor">#2F2D2C</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="titleOfCategory">
@@ -25,5 +31,7 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
+
+
 
 </resources>

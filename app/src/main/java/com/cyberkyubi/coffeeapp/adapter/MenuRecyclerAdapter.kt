@@ -17,9 +17,9 @@ import com.cyberkyubi.domain.model.MenuModel
 class MenuRecyclerAdapter(private var menu: List<MenuModel>): RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
     class MenuViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val drawableResource: ImageView = itemView.findViewById(R.id.menu_image_view)
-        val menuTitle: TextView = itemView.findViewById(R.id.menu_title_text_view)
-        val seasonalSpecials: TextView = itemView.findViewById(R.id.seasonal_specials_text_view)
+        val drawableResource: ImageView = itemView.findViewById(R.id.menu_card_image_view)
+        val menuTitle: TextView = itemView.findViewById(R.id.menu_title_card_text_view)
+        val seasonalSpecials: TextView = itemView.findViewById(R.id.seasonal_specials_card_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {

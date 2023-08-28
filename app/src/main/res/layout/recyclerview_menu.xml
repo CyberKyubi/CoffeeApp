@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/menu_image_view"
+            android:id="@+id/menu_card_image_view"
             android:layout_width="150dp"
             android:layout_height="175dp"
             android:scaleType="centerCrop"
@@ -27,25 +27,25 @@
             tools:srcCompat="@drawable/ic_coffee_drinks" />
 
         <TextView
-            android:id="@+id/menu_title_text_view"
+            android:id="@+id/menu_title_card_text_view"
             style="@style/titleOfMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_image_view"
+            app:layout_constraintTop_toBottomOf="@+id/menu_card_image_view"
             tools:text="Весна и лето" />
 
         <TextView
-            android:id="@+id/seasonal_specials_text_view"
+            android:id="@+id/seasonal_specials_card_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textColor="#9B9B9B"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_title_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/menu_title_card_text_view"
             tools:text="@string/seasonal_specials" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
