@@ -15,7 +15,7 @@ interface CoffeeDao {
     @Query("SELECT category_id, title FROM categories")
     suspend fun getCategories(): List<CategoriesEntity>
 
-    @Query("SELECT menu_id, title, category_id, drawable_resource_name FROM menu WHERE category_id = :categoryId")
+    @Query("SELECT menu_id, title, category_id, drawable_resource_name, is_seasonal_specials FROM menu WHERE category_id = :categoryId")
     suspend fun getMenuByCategoryId(categoryId: Int): List<MenuEntity>
 
     @Query("SELECT drink_id, menu_id, name, drawable_resource_name FROM drinks WHERE menu_id = :menuId")

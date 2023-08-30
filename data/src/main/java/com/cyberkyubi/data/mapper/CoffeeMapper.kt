@@ -27,6 +27,8 @@ object CoffeeMapper {
             menuId = entity.menuId,
             categoryId = entity.categoryId,
             title = entity.title,
+            description = entity.description,
+            isSeasonalSpecials =  entity.isSeasonalSpecials,
             drawableResourceName = entity.drawableResourceName
         )
     }

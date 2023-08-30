@@ -34,17 +34,13 @@ class DrinksListActivity : AppCompatActivity() {
             )
         }
 
-        val backButton = findViewById<ImageView>(R.id.backToMenuButton)
+        val backButton = findViewById<ImageView>(R.id.back_button_image_view)
         backButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-        val pageTitleTextView = findViewById<TextView>(R.id.pageTitleOLD)
-        viewModel.titleMenuLive.observe(this) {pageTitleTextView.text = it }
+//        val pageTitleTextView = findViewById<TextView>(R.id.pageTitleOLD)
+//        viewModel.titleMenuLive.observe(this) {pageTitleTextView.text = it }
 
-        gridView = findViewById(R.id.drinksGridView)
-        gridAdapter = DrinksListGridAdapter(this, emptyList())
-        gridView.adapter = gridAdapter
 
-        viewModel.drinkMenuLive.observe(this) { gridAdapter.updateDrinks(it) }
     }
 
     override fun onStart() {
