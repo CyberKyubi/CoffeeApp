@@ -7,10 +7,12 @@ import com.cyberkyubi.data.dao.CoffeeDao
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListCategoriesEntityToListCategoriesModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListDrinksEntityToListDrinkModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListFoodsEntityToListFoodModel
-import com.cyberkyubi.data.mapper.CoffeeMapper.mapListMenuEntityToListMenuModel
+import com.cyberkyubi.data.mapper.CoffeeMapper.mapListMenuDataModelToListMenuModel
+import com.cyberkyubi.data.mapper.CoffeeMapper.mapMenuDetailsDataModelToMenuDetailsModel
 import com.cyberkyubi.domain.model.CategoriesModel
 import com.cyberkyubi.domain.model.DrinkModel
 import com.cyberkyubi.domain.model.FoodModel
+import com.cyberkyubi.domain.model.MenuDetailsModel
 import com.cyberkyubi.domain.model.MenuModel
 import com.cyberkyubi.domain.repository.CoffeeRepository
 
@@ -24,8 +26,16 @@ class CoffeeRepositoryImpl(private val coffeeDao: CoffeeDao): CoffeeRepository {
 
     override suspend fun getMenuByCategoryId(categoryId: Int): List<MenuModel>  {
         return withContext(Dispatchers.IO) {
-            return@withContext mapListMenuEntityToListMenuModel(
+            return@withContext mapListMenuDataModelToListMenuModel(
                 coffeeDao.getMenuByCategoryId(categoryId = categoryId)
+            )
+        }
+    }
+
+    override suspend fun getMenuDetailsById(menuId: Int): MenuDetailsModel {
+        return withContext(Dispatchers.IO) {
+            return@withContext mapMenuDetailsDataModelToMenuDetailsModel(
+                coffeeDao.getMenuDetailsById(menuId = menuId)
             )
         }
     }

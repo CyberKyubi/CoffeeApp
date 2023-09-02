@@ -3,7 +3,6 @@ package com.cyberkyubi.coffeeapp.presentation.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
 import com.cyberkyubi.coffeeapp.R
@@ -11,15 +10,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.cyberkyubi.coffeeapp.databinding.ActivityDrinksListBinding
 import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksViewModel
-import com.cyberkyubi.coffeeapp.adapter.DrinksListGridAdapter
 
 class DrinksListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDrinksListBinding
     private val viewModel: DrinksViewModel by viewModel()
 
-    private lateinit var gridView: GridView
-    private lateinit var gridAdapter: DrinksListGridAdapter
 
     // todo выводить название, иконки ингридиентов, цену, кнопку плюса
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,18 +24,16 @@ class DrinksListActivity : AppCompatActivity() {
 
         val bundle = intent.extras
         if (bundle != null) {
-            viewModel.setLiveData(
-                menuId = bundle.getInt("menu_id"),
-                titleMenu = bundle.getString("title_menu", "Меню")
-            )
+            viewModel.setLiveData(menuId = bundle.getInt("menu_id"))
         }
 
-        val backButton = findViewById<ImageView>(R.id.back_button_image_view)
+        val backButton = findViewById<ImageView>(R.id.back_button_image)
         backButton.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-//        val pageTitleTextView = findViewById<TextView>(R.id.pageTitleOLD)
-//        viewModel.titleMenuLive.observe(this) {pageTitleTextView.text = it }
-
+        val menuTitleTextView = findViewById<TextView>(R.id.menu_title_text)
+        val menuDescriptionTextView = findViewById<TextView>(R.id.menu_description_text)
+        viewModel.menuTitleLive.observe(this) { menuTitleTextView.text = it }
+        viewModel.menuDescriptionLive.observe(this) {menuDescriptionTextView.text = it }
 
     }
 

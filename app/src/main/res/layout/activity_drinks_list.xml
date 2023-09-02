@@ -7,7 +7,7 @@
     tools:context=".presentation.activity.DrinksListActivity">
 
     <ImageView
-        android:id="@+id/back_button_image_view"
+        android:id="@+id/back_button_image"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
@@ -21,15 +21,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        tools:text="@string/menu"
+        android:text="@string/menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.418"
-        app:layout_constraintStart_toEndOf="@+id/back_button_image_view"
+        app:layout_constraintStart_toEndOf="@+id/back_button_image"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/pagesTitle" />
 
     <TextView
-        android:id="@+id/menu_title_text_view"
+        android:id="@+id/menu_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -38,11 +38,11 @@
         android:textColor="#2F2D2C"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_button_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/back_button_image"
         tools:text="Классический кофе" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/menu_description_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -54,8 +54,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_title_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/menu_title_text"
         tools:text="Классика, олицетворяющая стиль: наше меню 'Классический кофе' - это посвящение наиболее известным и узнаваемым кофейным напиткам. В каждой чашке скрывается история и традиция, объединенные вкусом и ароматом, который оставит вас в восторге." />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/drinks_list_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu_description_text"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

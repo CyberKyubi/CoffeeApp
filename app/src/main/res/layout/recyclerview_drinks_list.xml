@@ -6,47 +6,43 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/card_constraint"
+        android:id="@+id/drink_card_constraint"
         android:layout_width="150dp"
         android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/menu_card_image"
-            android:layout_width="150dp"
-            android:layout_height="175dp"
+            android:id="@+id/drink_image"
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
             android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/roundedCornersMenuImageView"
-            tools:srcCompat="@drawable/ic_coffee_drinks" />
+            tools:srcCompat="@drawable/ic_coffee" />
 
         <TextView
-            android:id="@+id/menu_title_card_text"
+            android:id="@+id/drink_name_text"
             style="@style/titleOfMenu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_card_image"
-            tools:text="Весна и лето" />
-
-        <TextView
-            android:id="@+id/seasonal_specials_card_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="#9B9B9B"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_title_card_text"
-            tools:text="@string/seasonal_specials" />
+            app:layout_constraintTop_toBottomOf="@+id/drink_image"
+            tools:text="Капучино" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

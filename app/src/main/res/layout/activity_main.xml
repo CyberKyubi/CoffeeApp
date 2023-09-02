@@ -12,7 +12,7 @@
         tools:context=".presentation.activity.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/header_constraint_layout"
+            android:id="@+id/header_constraint"
             android:layout_width="match_parent"
             android:layout_height="260dp"
             android:background="@color/main_page_header_brown"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/categories_constraint_layout"
+                android:id="@+id/categories_constraint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -42,19 +42,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_page_title">
 
                 <TextView
-                    android:id="@+id/beverages_text_view"
+                    android:id="@+id/beverages_text"
                     style="@style/titleOfCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/foods_text_view"
+                    app:layout_constraintEnd_toStartOf="@+id/foods_text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/beverages" />
 
                 <TextView
-                    android:id="@+id/foods_text_view"
+                    android:id="@+id/foods_text"
                     style="@style/titleOfCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,21 +63,21 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="@string/food" />
 
-                <Button
+                <View
                     android:id="@+id/line"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="4dp"
-                    android:foreground="@color/text_view_brown"
-                    app:layout_constraintBottom_toTopOf="@+id/products_text_view"
+                    android:background="@color/text_view_brown"
+                    app:layout_constraintBottom_toTopOf="@+id/products_text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.396"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/products_text_view"
+                    android:id="@+id/products_text"
                     style="@style/titleOfCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +85,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/line"
                     tools:text="@string/products" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -93,16 +92,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menu_recycler_view"
+            android:id="@+id/menu_recycler"
             android:layout_width="0dp"
             android:layout_height="270dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header_constraint_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/header_constraint" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/promo_image_view"
+            android:id="@+id/promo_image"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginStart="24dp"
@@ -112,7 +111,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_recycler_view"
+            app:layout_constraintTop_toBottomOf="@+id/menu_recycler"
             app:shapeAppearanceOverlay="@style/roundedCornersMenuImageView"
             app:srcCompat="@drawable/ic_promo_image" />
 

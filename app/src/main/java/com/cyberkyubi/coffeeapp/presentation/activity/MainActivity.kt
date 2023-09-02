@@ -28,9 +28,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
-        val beveragesTextView = findViewById<TextView>(R.id.beverages_text_view)
-        val foodsTextView = findViewById<TextView>(R.id.foods_text_view)
-        val productsTextView = findViewById<TextView>(R.id.products_text_view)
+        val beveragesTextView = findViewById<TextView>(R.id.beverages_text)
+        val foodsTextView = findViewById<TextView>(R.id.foods_text)
+        val productsTextView = findViewById<TextView>(R.id.products_text)
         val dotDrawableBottom = AppCompatResources.getDrawable(this, R.drawable.dot)
 
         viewModel.beverageCategoryLive.observe(this) { beveragesTextView.text = it }
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerAdapter = MenuRecyclerAdapter(emptyList())
         viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(adapter = recyclerAdapter, it) }
-        recyclerView = findViewById(R.id.menu_recycler_view)
+        recyclerView = findViewById(R.id.menu_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = recyclerAdapter
     }

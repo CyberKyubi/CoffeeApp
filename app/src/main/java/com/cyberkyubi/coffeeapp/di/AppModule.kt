@@ -19,6 +19,7 @@ val appModule = module {
 
     viewModel {
         DrinksViewModel(
+            getMenuDetailsUseCase = get(),
             getDrinkMenuByIdUseCase = get()
         )
     }
