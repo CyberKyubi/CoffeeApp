@@ -5,17 +5,22 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cyberkyubi.coffeeapp.R
+import com.cyberkyubi.coffeeapp.adapter.DrinksListRecyclerAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.cyberkyubi.coffeeapp.databinding.ActivityDrinksListBinding
-import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksViewModel
+import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksListViewModel
 
 class DrinksListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDrinksListBinding
-    private val viewModel: DrinksViewModel by viewModel()
+    private val viewModel: DrinksListViewModel by viewModel()
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerAdapter: DrinksListRecyclerAdapter
 
     // todo выводить название, иконки ингридиентов, цену, кнопку плюса
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +40,11 @@ class DrinksListActivity : AppCompatActivity() {
         viewModel.menuTitleLive.observe(this) { menuTitleTextView.text = it }
         viewModel.menuDescriptionLive.observe(this) {menuDescriptionTextView.text = it }
 
+        recyclerAdapter = DrinksListRecyclerAdapter(emptyList())
+        recyclerView = findViewById(R.id.drinks_list_recycler)
+        viewModel.drinksListLive.observe(this) { recyclerAdapter.updateDrinks(it) }
+        recyclerView.layoutManager = GridLayoutManager(this,  2)
+        recyclerView.adapter = recyclerAdapter
     }
 
     override fun onStart() {

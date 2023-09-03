@@ -5,7 +5,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 import com.cyberkyubi.coffeeapp.presentation.viewmodel.MainViewModel
-import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksViewModel
+import com.cyberkyubi.coffeeapp.presentation.viewmodel.DrinksListViewModel
 
 val appModule = module {
 
@@ -18,9 +18,9 @@ val appModule = module {
     }
 
     viewModel {
-        DrinksViewModel(
+        DrinksListViewModel(
             getMenuDetailsUseCase = get(),
-            getDrinkMenuByIdUseCase = get()
+            getDrinksListByMenuIdUseCase = get()
         )
     }
 

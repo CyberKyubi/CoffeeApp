@@ -4,7 +4,7 @@ import org.koin.dsl.module
 
 import com.cyberkyubi.domain.usecase.GetBeverageMenuUseCase
 import com.cyberkyubi.domain.usecase.GetCategoriesUseCase
-import com.cyberkyubi.domain.usecase.GetDrinkMenuByIdUseCase
+import com.cyberkyubi.domain.usecase.GetDrinksListByMenuIdUseCase
 import com.cyberkyubi.domain.usecase.GetFoodMenuByIdUseCase
 import com.cyberkyubi.domain.usecase.GetFoodMenuUseCase
 import com.cyberkyubi.domain.usecase.GetMenuDetailsUseCase
@@ -20,7 +20,7 @@ val domainModule = module {
     factory { GetMenuDetailsUseCase(coffeeRepository = get()) }
 
     // DrinksViewModel
-    factory { GetDrinkMenuByIdUseCase(coffeeRepository = get()) }
+    factory { GetDrinksListByMenuIdUseCase(coffeeRepository = get()) }
 
 
     factory { GetFoodMenuByIdUseCase(coffeeRepository = get()) }

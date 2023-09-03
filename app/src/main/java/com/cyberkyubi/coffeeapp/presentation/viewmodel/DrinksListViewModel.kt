@@ -1,6 +1,5 @@
 package com.cyberkyubi.coffeeapp.presentation.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,22 +7,22 @@ import kotlinx.coroutines.launch
 
 import com.cyberkyubi.domain.model.DrinkModel
 import com.cyberkyubi.domain.model.MenuDetailsModel
-import com.cyberkyubi.domain.usecase.GetDrinkMenuByIdUseCase
+import com.cyberkyubi.domain.usecase.GetDrinksListByMenuIdUseCase
 import com.cyberkyubi.domain.usecase.GetMenuDetailsUseCase
 
-class DrinksViewModel(
+class DrinksListViewModel(
     private val getMenuDetailsUseCase: GetMenuDetailsUseCase,
-    private val getDrinkMenuByIdUseCase: GetDrinkMenuByIdUseCase
+    private val getDrinksListByMenuIdUseCase: GetDrinksListByMenuIdUseCase
 ) : ViewModel() {
 
     private lateinit var menuDetailsModel: MenuDetailsModel
 
     private val menuTitleMutable = MutableLiveData<String>()
     private val menuDescriptionMutable = MutableLiveData<String>()
-    private val drinksMenuMutableLive = MutableLiveData<List<DrinkModel>>()
+    private val drinksListMutableLive = MutableLiveData<List<DrinkModel>>()
     val menuTitleLive = menuTitleMutable
     val menuDescriptionLive = menuDescriptionMutable
-    val drinksMenuLive = drinksMenuMutableLive
+    val drinksListLive = drinksListMutableLive
 
 
     fun setLiveData(menuId: Int) {
@@ -31,17 +30,8 @@ class DrinksViewModel(
             menuDetailsModel = getMenuDetailsUseCase.execute(menuId)
             menuTitleMutable.value = menuDetailsModel.title
             menuDescriptionMutable.value = menuDetailsModel.description
+
+            drinksListMutableLive.value = getDrinksListByMenuIdUseCase.execute(menuId = menuId)
         }
-
-//        getDrinkMenu()
     }
-
-    private fun getDrinkMenu() {
-//        viewModelScope.launch {
-//            drinksMenuMutableLive.value = menuIdMutableLive.value?.let {
-//                getDrinkMenuByIdUseCase.execute(menuId = it)
-//            }
-//        }
-    }
-
 }

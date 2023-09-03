@@ -14,7 +14,7 @@ interface CoffeeRepository {
 
     suspend fun getMenuDetailsById(menuId: Int): MenuDetailsModel
 
-    suspend fun getDrinkMenuById(menuId: Int): List<DrinkModel>
+    suspend fun getDrinksListByMenuId(menuId: Int): List<DrinkModel>
 
     suspend fun getFoodMenuById(menuId: Int): List<FoodModel>
 }

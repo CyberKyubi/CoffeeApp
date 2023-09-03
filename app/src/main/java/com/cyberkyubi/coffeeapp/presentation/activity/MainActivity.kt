@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         productsTextView.setOnClickListener { viewModel.getProductMenu() }
 
         recyclerAdapter = MenuRecyclerAdapter(emptyList())
-        viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(adapter = recyclerAdapter, it) }
+        viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(it) }
         recyclerView = findViewById(R.id.menu_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = recyclerAdapter

@@ -8,10 +8,11 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.cyberkyubi.coffeeapp.R
+import com.cyberkyubi.domain.model.DrinkModel
 import com.cyberkyubi.domain.model.MenuModel
 
 class DrinksListRecyclerAdapter (
-    private var drinksList: List<MenuModel>
+    private var drinksList: List<DrinkModel>
 ) : RecyclerView.Adapter<DrinksListRecyclerAdapter.DrinksListViewHolder>() {
 
     class DrinksListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -29,6 +30,13 @@ class DrinksListRecyclerAdapter (
     override fun getItemCount() = drinksList.size
 
     override fun onBindViewHolder(holder: DrinksListViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item: DrinkModel = drinksList[position]
+
+        holder.drinkName.text = item.name
+    }
+
+    fun updateDrinks(drinks: List<DrinkModel>) {
+        drinksList = drinks
+        this.notifyDataSetChanged()
     }
 }

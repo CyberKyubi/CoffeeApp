@@ -58,9 +58,9 @@ class MenuRecyclerAdapter(
         }
     }
 
-    fun updateMenu(adapter: MenuRecyclerAdapter, newMenu: List<MenuModel>) {
+    fun updateMenu(newMenu: List<MenuModel>) {
         menu = newMenu
-        adapter.notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
     private fun setOnClickListener(context: Context, item: MenuModel) {

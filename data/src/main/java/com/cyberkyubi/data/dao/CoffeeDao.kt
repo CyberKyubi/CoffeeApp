@@ -1,13 +1,11 @@
 package com.cyberkyubi.data.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
 import androidx.room.Query
 
 import com.cyberkyubi.data.entity.lower_level.CategoriesEntity
 import com.cyberkyubi.data.entity.lower_level.MenuDataModel
 import com.cyberkyubi.data.entity.lower_level.MenuDetailsDataModel
-import com.cyberkyubi.data.entity.lower_level.MenuEntity
 import com.cyberkyubi.data.entity.middle_level.DrinksEntity
 import com.cyberkyubi.data.entity.middle_level.FoodsEntity
 
@@ -24,7 +22,7 @@ interface CoffeeDao {
     suspend fun getMenuDetailsById(menuId: Int): MenuDetailsDataModel
 
     @Query("SELECT drink_id, menu_id, name, drawable_resource_name FROM drinks WHERE menu_id = :menuId")
-    suspend fun getDrinkMenuById(menuId: Int): List<DrinksEntity>
+    suspend fun getDrinksListByMenuId(menuId: Int): List<DrinksEntity>
 
     @Query("SELECT food_id, menu_id, name, drawable_resource_name FROM foods WHERE menu_id = :menuId")
     suspend fun getFoodMenuById(menuId: Int): List<FoodsEntity>

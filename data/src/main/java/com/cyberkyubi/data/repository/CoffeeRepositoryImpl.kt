@@ -40,10 +40,10 @@ class CoffeeRepositoryImpl(private val coffeeDao: CoffeeDao): CoffeeRepository {
         }
     }
 
-    override suspend fun getDrinkMenuById (menuId: Int): List<DrinkModel> {
+    override suspend fun getDrinksListByMenuId (menuId: Int): List<DrinkModel> {
         return withContext(Dispatchers.IO) {
             return@withContext mapListDrinksEntityToListDrinkModel(
-                coffeeDao.getDrinkMenuById(menuId = menuId)
+                coffeeDao.getDrinksListByMenuId(menuId = menuId)
             )
         }
     }
