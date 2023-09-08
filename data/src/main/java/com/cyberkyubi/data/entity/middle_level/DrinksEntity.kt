@@ -25,3 +25,11 @@ data class DrinksEntity (
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "drawable_resource_name") val drawableResourceName: String
 )
+
+data class DrinkDataModel(
+    @ColumnInfo(name = "drink_id") val drinkId: Int,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "price") val price: Int,
+    @ColumnInfo(name = "drawable_resource_name") val drawableResourceName: String,
+    @ColumnInfo(name = "ingredients_id") val ingredientsId: String
+)

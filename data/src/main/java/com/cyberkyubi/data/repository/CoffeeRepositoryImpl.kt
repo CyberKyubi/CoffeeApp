@@ -5,7 +5,7 @@ import kotlinx.coroutines.withContext
 
 import com.cyberkyubi.data.dao.CoffeeDao
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListCategoriesEntityToListCategoriesModel
-import com.cyberkyubi.data.mapper.CoffeeMapper.mapListDrinksEntityToListDrinkModel
+import com.cyberkyubi.data.mapper.CoffeeMapper.mapListDrinkDataModelToListDrinkModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListFoodsEntityToListFoodModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapListMenuDataModelToListMenuModel
 import com.cyberkyubi.data.mapper.CoffeeMapper.mapMenuDetailsDataModelToMenuDetailsModel
@@ -42,7 +42,7 @@ class CoffeeRepositoryImpl(private val coffeeDao: CoffeeDao): CoffeeRepository {
 
     override suspend fun getDrinksListByMenuId (menuId: Int): List<DrinkModel> {
         return withContext(Dispatchers.IO) {
-            return@withContext mapListDrinksEntityToListDrinkModel(
+            return@withContext mapListDrinkDataModelToListDrinkModel(
                 coffeeDao.getDrinksListByMenuId(menuId = menuId)
             )
         }

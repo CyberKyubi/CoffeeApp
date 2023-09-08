@@ -1,10 +1,10 @@
 package com.cyberkyubi.data.mapper
 
+import android.util.Log
 import com.cyberkyubi.data.entity.lower_level.CategoriesEntity
 import com.cyberkyubi.data.entity.lower_level.MenuDataModel
 import com.cyberkyubi.data.entity.lower_level.MenuDetailsDataModel
-import com.cyberkyubi.data.entity.lower_level.MenuEntity
-import com.cyberkyubi.data.entity.middle_level.DrinksEntity
+import com.cyberkyubi.data.entity.middle_level.DrinkDataModel
 import com.cyberkyubi.data.entity.middle_level.FoodsEntity
 import com.cyberkyubi.domain.model.CategoriesModel
 import com.cyberkyubi.domain.model.DrinkModel
@@ -47,17 +47,18 @@ object CoffeeMapper {
         )
     }
 
-    private fun mapDrinksEntityToDrinkModel(entity: DrinksEntity) : DrinkModel {
+    private fun mapDrinksEntityToDrinkModel(dataModel: DrinkDataModel) : DrinkModel {
         return DrinkModel(
-            drinkId = entity.drinkId,
-            menuId = entity.menuId,
-            name = entity.name,
-            drawableResourceName = entity.drawableResourceName
+            drinkId = dataModel.drinkId,
+            name = dataModel.name,
+            price = dataModel.price,
+            drawableResourceName = dataModel.drawableResourceName,
+            ingredients = dataModel.ingredientsId.split(", ").mapNotNull { it.toIntOrNull() },
         )
     }
 
-    fun mapListDrinksEntityToListDrinkModel(entityList: List<DrinksEntity>) : List<DrinkModel> {
-        return entityList.map { mapDrinksEntityToDrinkModel(it) }
+    fun mapListDrinkDataModelToListDrinkModel(listDataModel: List<DrinkDataModel>) : List<DrinkModel> {
+        return listDataModel.map { mapDrinksEntityToDrinkModel(it) }
     }
 
    private fun mapFoodsEntityToFoodModel(entity: FoodsEntity) : FoodModel {

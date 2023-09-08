@@ -8,9 +8,11 @@ import com.cyberkyubi.data.entity.lower_level.CategoriesEntity
 import com.cyberkyubi.data.entity.lower_level.MenuEntity
 import com.cyberkyubi.data.entity.middle_level.DrinksEntity
 import com.cyberkyubi.data.entity.middle_level.FoodsEntity
+import com.cyberkyubi.data.entity.top_level.DrinkIngredientsEntity
 import com.cyberkyubi.data.entity.top_level.DrinkMilksEntity
 import com.cyberkyubi.data.entity.top_level.DrinkPricesEntity
 import com.cyberkyubi.data.entity.top_level.DrinkSizesEntity
+import com.cyberkyubi.data.entity.top_level.IngredientsEntity
 import com.cyberkyubi.data.entity.top_level.MilksEntity
 import com.cyberkyubi.data.entity.top_level.SizesEntity
 
@@ -25,8 +27,10 @@ import com.cyberkyubi.data.entity.top_level.SizesEntity
 
         MilksEntity::class,
         SizesEntity::class,
+        IngredientsEntity::class,
         DrinkSizesEntity::class,
         DrinkMilksEntity::class,
+        DrinkIngredientsEntity::class,
         DrinkPricesEntity::class
     ]
 )

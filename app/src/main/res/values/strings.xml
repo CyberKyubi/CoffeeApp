@@ -10,6 +10,8 @@
     <!-- Menu card -->
     <string name="seasonal_specials">Сезонные новинки</string>
 
+    <string name="drink_price">%1$s ₽</string>
+
 
     <string name="search_hint">Найди свое кофе</string>
     <string name="menu">Меню</string>
