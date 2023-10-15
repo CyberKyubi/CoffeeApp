@@ -15,7 +15,6 @@ enum class StateOfMenu {
     Initial,
     BeveragesMenu,
     FoodsMenu,
-    ProductsMenu
 }
 
 class MainViewModel(
@@ -26,11 +25,9 @@ class MainViewModel(
 
     private val beverageCategoryMutableLive = MutableLiveData<String>()
     private val foodCategoryMutableLive = MutableLiveData<String>()
-    private val productCategoryMutableLive = MutableLiveData<String>()
     private val menuMutableLive = MutableLiveData<List<MenuModel>>()
     val beverageCategoryLive: LiveData<String> = beverageCategoryMutableLive
     val foodCategoryLive: LiveData<String> = foodCategoryMutableLive
-    val productCategoryLive: LiveData<String> = productCategoryMutableLive
     val menuLive: LiveData<List<MenuModel>> = menuMutableLive
 
     private var currentStateOfMenuMutableLiveData = MutableLiveData(StateOfMenu.Initial)
@@ -42,10 +39,9 @@ class MainViewModel(
 
     private fun getInitialMenu() {
         viewModelScope.launch {
-            val (beverageCategory, foodCategory, productCategory) = getCategoriesUseCase.execute()
+            val (beverageCategory, foodCategory) = getCategoriesUseCase.execute()
             beverageCategoryMutableLive.value = beverageCategory.title
             foodCategoryMutableLive.value = foodCategory.title
-            productCategoryMutableLive.value = productCategory.title
         }
 
         getBeverageMenu()
@@ -68,14 +64,6 @@ class MainViewModel(
             viewModelScope.launch {
                 menuMutableLive.value = getFoodMenuUseCase.execute(categoryId = 2)
             }
-        }
-    }
-
-    fun getProductMenu() {
-        if (currentStateOfMenuMutableLiveData.value != StateOfMenu.ProductsMenu) {
-            currentStateOfMenuMutableLiveData.value = StateOfMenu.ProductsMenu
-
-
         }
     }
 }

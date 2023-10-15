@@ -30,17 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         val beveragesTextView = findViewById<TextView>(R.id.beverages_text)
         val foodsTextView = findViewById<TextView>(R.id.foods_text)
-        val productsTextView = findViewById<TextView>(R.id.products_text)
         val dotDrawableBottom = AppCompatResources.getDrawable(this, R.drawable.dot)
 
         viewModel.beverageCategoryLive.observe(this) { beveragesTextView.text = it }
         viewModel.foodCategoryLive.observe(this) { foodsTextView.text = it }
-        viewModel.productCategoryLive.observe(this) {productsTextView.text = it}
         viewModel.stateOfMenuLive.observe(this) {stateOfMenu ->
 
             setMenuStyle(beveragesTextView, isActive = false, dotDrawableBottom = null)
             setMenuStyle(foodsTextView, isActive = false, dotDrawableBottom = null)
-            setMenuStyle(productsTextView, isActive = false, dotDrawableBottom = null)
 
             when (stateOfMenu) {
                 StateOfMenu.BeveragesMenu -> {
@@ -49,9 +46,6 @@ class MainActivity : AppCompatActivity() {
                 StateOfMenu.FoodsMenu -> {
                     setMenuStyle(foodsTextView, isActive = true, dotDrawableBottom)
                 }
-                StateOfMenu.ProductsMenu -> {
-                    setMenuStyle(productsTextView, isActive = true, dotDrawableBottom)
-                }
 
                 else -> {}
             }
@@ -59,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
         beveragesTextView.setOnClickListener { viewModel.getBeverageMenu() }
         foodsTextView.setOnClickListener { viewModel.getFoodMenu() }
-        productsTextView.setOnClickListener { viewModel.getProductMenu() }
 
         recyclerAdapter = MenuRecyclerAdapter(emptyList())
         viewModel.menuLive.observe(this) { recyclerAdapter.updateMenu(it) }
